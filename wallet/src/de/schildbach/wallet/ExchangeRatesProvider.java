@@ -279,13 +279,14 @@ public class ExchangeRatesProvider extends ContentProvider
         // Keep the LTC rate around for a bit
         Double btcRate = 0.0;
         String currencyCryptsy = CoinDefinition.cryptsyMarketCurrency;
-        String urlCryptsy = "http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid="+ CoinDefinition.cryptsyMarketId;
+        String urlCryptsy = "https://c-cex.com/t/"+CoinDefinition.coinTicker.toLowerCase()+"-btc.json";
 
 
 
 
         try {
             // final String currencyCode = currencies[i];
+			log.info("Trying to connect to: "+urlCryptsy);
             final URL URLCryptsy = new URL(urlCryptsy);
             final HttpURLConnection connectionCryptsy = (HttpURLConnection)URLCryptsy.openConnection();
             connectionCryptsy.setConnectTimeout(Constants.HTTP_TIMEOUT_MS * 2);
@@ -295,19 +296,24 @@ public class ExchangeRatesProvider extends ContentProvider
             final StringBuilder contentCryptsy = new StringBuilder();
 
             Reader reader = null;
+	    // This function used to take the average of all recent DGC->BTC trades.
+	    // It now takes c-cex average (because there are very few trades to take average from).
             try
             {
                 reader = new InputStreamReader(new BufferedInputStream(connectionCryptsy.getInputStream(), 1024));
                 Io.copy(reader, contentCryptsy);
+				log.info("This is the response: "+contentCryptsy.toString());
                 final JSONObject head = new JSONObject(contentCryptsy.toString());
-                JSONObject returnObject = head.getJSONObject("return");
-                JSONObject markets = returnObject.getJSONObject("markets");
-                JSONObject coinInfo = markets.getJSONObject(CoinDefinition.coinTicker);
+		JSONObject ticker = head.getJSONObject("ticker");
+		double averageTrade = ticker.getDouble("avg");
+// When using cryptsy.com:
+//                JSONObject returnObject = head.getJSONObject("return");
+//                JSONObject markets = returnObject.getJSONObject("markets");
+//                JSONObject coinInfo = markets.getJSONObject("DGC");//CoinDefinition.coinTicker);
+//                JSONArray recenttrades = coinInfo.getJSONArray("recenttrades");
 
-
-
-                JSONArray recenttrades = coinInfo.getJSONArray("recenttrades");
-
+// When taking averages:
+/*
                 double btcTraded = 0.0;
                 double coinTraded = 0.0;
 
@@ -321,7 +327,7 @@ public class ExchangeRatesProvider extends ContentProvider
                 }
 
                 Double averageTrade = btcTraded / coinTraded;
-
+*/
 
 
                 //Double lastTrade = GLD.getDouble("lasttradeprice");
@@ -516,8 +522,8 @@ public class ExchangeRatesProvider extends ContentProvider
                 }
                 else
                 {
-                    rates.put(CoinDefinition.cryptsyMarketCurrency, new ExchangeRate(CoinDefinition.cryptsyMarketCurrency, GenericUtils.parseCoin(String.format("%.8f", btcRate).replace(",", "."), 0), cryptsyValue ? "pubapi.cryptsy.com" : "data.bter.com"));
-                    rates.put("m" + CoinDefinition.cryptsyMarketCurrency, new ExchangeRate("m" + CoinDefinition.cryptsyMarketCurrency, GenericUtils.parseCoin(String.format("%.5f", btcRate*1000).replace(",", "."), 0), cryptsyValue ? "pubapi.cryptsy.com" : "data.bter.com"));
+                    rates.put(CoinDefinition.cryptsyMarketCurrency, new ExchangeRate(CoinDefinition.cryptsyMarketCurrency, GenericUtils.parseCoin(String.format("%.8f", btcRate).replace(",", "."), 0), cryptsyValue ? "c-cex.com" : "data.bter.com"));
+                    rates.put("m" + CoinDefinition.cryptsyMarketCurrency, new ExchangeRate("m" + CoinDefinition.cryptsyMarketCurrency, GenericUtils.parseCoin(String.format("%.5f", btcRate*1000).replace(",", "."), 0), cryptsyValue ? "c-cex.com" : "data.bter.com"));
                 }
 
 

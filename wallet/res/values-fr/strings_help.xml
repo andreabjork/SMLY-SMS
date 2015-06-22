@@ -2,11 +2,11 @@
 <resources>
   <string name="help_wallet">\n<![CDATA[
 		<p>
-			La partie supérieure gauche de l\'écran affiche votre adresse digitalcoin choisie et que d\'autres personnes doivent connaître pour vous envoyer des digitalcoins.
+			La partie supérieure gauche de l\'écran affiche votre adresse smileycoin choisie et que d\'autres personnes doivent connaître pour vous envoyer des smileycoins.
 			Toquer pour changer cette adresse.
 		</p>
 		<p>
-			Le code QR à droite contient votre adresse digitalcoin et peut être numérisée par un tiers.
+			Le code QR à droite contient votre adresse smileycoin et peut être numérisée par un tiers.
 			Toquer le code QR pour l\'agrandir.
 		</p>
 		<p>
@@ -21,20 +21,20 @@
 			Glisser vers la gauche ou vers la droite pour appliquer des filtres à la liste.
 		</p>
 		<p>
-			Vous pouvez envoyer ou recevoir des digitalcoins en toquant les boutons dans la barre des actions.
+			Vous pouvez envoyer ou recevoir des smileycoins en toquant les boutons dans la barre des actions.
 			Plus d\'options sont disponibles dans le menu des options.
 		</p>
 	]]>\n\t</string>
   <string name="help_request_coins">\n<![CDATA[
 		<p>
-			En utilisant cette zone de dialogue vous pouvez demander des pièces à une autre personne (qui devrait déjà avoir installé le digitalcoin Wallet).
+			En utilisant cette zone de dialogue vous pouvez demander des pièces à une autre personne (qui devrait déjà avoir installé le smileycoin Wallet).
 		</p>
 		<p>
-			Vous pouvez d\'abord saisir un montant de digitalcoins à demander.
+			Vous pouvez d\'abord saisir un montant de smileycoins à demander.
 		</p>
 		<p>
 			Ensuite, soit l\'autre personne numérise le code QR généré, soit vous pouvez envoyer votre demande à une personne éloignée avec le bouton Partager de la barre des actions.
-			L\'autre personne devra cliquer sur l\'URL digitalcoin.
+			L\'autre personne devra cliquer sur l\'URL smileycoin.
 		</p>
 		<p>
 			Dans les deux cas, l\'autre personne obtiendra une zone de dialogue pré-remplie pour envoyer les pièces.
@@ -43,16 +43,16 @@
 	]]>\n\t</string>
   <string name="help_send_coins">\n<![CDATA[
 		<p>
-			Vous avez commencé le processus d\'envoi de digitalcoins.
-			Vous êtes arrivé ici depuis l\'écran principal ou en cliquant sur une URL digitalcoin dans votre navigateur.
+			Vous avez commencé le processus d\'envoi de smileycoins.
+			Vous êtes arrivé ici depuis l\'écran principal ou en cliquant sur une URL smileycoin dans votre navigateur.
 		</p>
 		<p>
-			D\'abord, saisir l\'adresse digitalcoin de destination.
+			D\'abord, saisir l\'adresse smileycoin de destination.
 			L\'adresse sera complétée automatiquement pour les adresses enregistrées dans votre carnet.
-			Vous pouvez aussi numériser des codes QR avec des adresses digitalcoin ou des demandes de digitalcoins en pressant le bouton QR dans la barre des actions.
+			Vous pouvez aussi numériser des codes QR avec des adresses smileycoin ou des demandes de smileycoins en pressant le bouton QR dans la barre des actions.
 		</p>
 		<p>
-			Ensuite, vous pouvez voir combien de digitalcoins peuvent être dépensés actuellement.
+			Ensuite, vous pouvez voir combien de smileycoins peuvent être dépensés actuellement.
 			Tout écart avec le solde de l\'écran principal n\'est pas encore confirmé et ne peut donc pas être dépensé.
 		</p>
 		<p>
@@ -60,7 +60,7 @@
 		</p>
 		<p>
 			Vous pouvez saisir un paiement hors-ligne.
-			Il sera envoyé au prochain lancement du digitalcoin Wallet.
+			Il sera envoyé au prochain lancement du smileycoin Wallet.
 			Pour le traitement le plus rapide possible de votre paiement, assurez vous d\'être bien connecté (c.-à-d. sur un WLAN).
 		</p>
 		<p>
@@ -74,8 +74,8 @@
 			<b>Notes de sécurité importantes :</b>
 		</p>
 		<p>
-			Les digitalcoins sont stockés sur l\'appareil.
-			<b>Si vous le perdez, vous perdez vos digitalcoins.</b>
+			Les smileycoins sont stockés sur l\'appareil.
+			<b>Si vous le perdez, vous perdez vos smileycoins.</b>
 		</p>
 		<p>
 			Cela signifie que vous devez <b>sauvegarder votre portefeuille</b> !
@@ -83,12 +83,12 @@
 			Gardez votre sauvegarde en sûreté et souvenez-vous de votre mot de passe.
 		</p>
 		<p>
-			<b>Avant de désinstaller digitalcoin Wallet</b> (ou d\'effacer les données de l\'appli/effacer les données de votre appareil), <b>transférez vos digitalcoins vers un autre portefeuille</b>.
-			Les digitalcoins restants seront perdus.
+			<b>Avant de désinstaller smileycoin Wallet</b> (ou d\'effacer les données de l\'appli/effacer les données de votre appareil), <b>transférez vos smileycoins vers un autre portefeuille</b>.
+			Les smileycoins restants seront perdus.
 		</p>
 		<p>
 			<b>Les paiements sont irréversibles</b>.
-			Si vous envoyez vos digitalcoins dans le vide, il n\'y a presque aucun moyen de les récupérer.
+			Si vous envoyez vos smileycoins dans le vide, il n\'y a presque aucun moyen de les récupérer.
 		</p>
 		<p>
 			<b>Assurez la sécurité de votre appareil mobile !</b>

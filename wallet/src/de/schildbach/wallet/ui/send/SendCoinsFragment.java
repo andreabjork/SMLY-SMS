@@ -89,14 +89,7 @@ import com.google.bitcoin.core.Wallet;
 import com.google.bitcoin.core.Wallet.BalanceType;
 import com.google.bitcoin.core.Wallet.SendRequest;
 
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.TransactionConfidence;
-import com.google.bitcoin.core.Wallet;
 import com.google.bitcoin.core.CoinDefinition;
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.Sha256Hash;
-import com.google.bitcoin.core.NetworkParameters;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Configuration;

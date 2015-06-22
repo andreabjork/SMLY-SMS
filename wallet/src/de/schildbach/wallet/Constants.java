@@ -158,8 +158,8 @@ public final class Constants
 	public static final String BINARY_URL = "https://github.com/HashEngineering/"+ CoinDefinition.coinName.toLowerCase() +"-wallet/releases";
 	public static final String CREDITS_BITCOINJ_URL = "https://github.com/HashEngineering/" + CoinDefinition.coinName.toLowerCase() + "j";
 	public static final String CREDITS_ZXING_URL = "http://code.google.com/p/zxing/";
-    public static final String CREDITS_WEBSITE_URL = "http://digitalcoin.co/";
-    public static final String CREDITS_FORUM_URL = "http://digitalcoin.co/forums/";
+    public static final String CREDITS_WEBSITE_URL = "http://tutor-web.info/smileycoin";
+    public static final String CREDITS_FORUM_URL = "https://bitcointalk.org/index.php?topic=845761.0";
 
 	public static final String CREDITS_ICON_URL = "https://bitcointalk.org/index.php?action=profile;u=2062";
 

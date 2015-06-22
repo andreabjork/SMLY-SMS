@@ -2,11 +2,11 @@
 <resources>
   <string name="help_wallet">\n<![CDATA[
 		<p>
-			La parte superior izquierda de la pantalla muestra tu dirección digitalcoin seleccionada, que tendrán que conocer quienes te envíen digitalcoins.
+			La parte superior izquierda de la pantalla muestra tu dirección smileycoin seleccionada, que tendrán que conocer quienes te envíen smileycoins.
 			Pulsar para cambiar la dirección.
 		</p>
 		<p>
-			El código QR a la derecha contiene tu dirección digitalcoin y puede utilizarse para que otras personas lo exploren.
+			El código QR a la derecha contiene tu dirección smileycoin y puede utilizarse para que otras personas lo exploren.
 			Pulsa sobre el código QR para obtener una versión mayor.
 		</p>
 		<p>
@@ -27,33 +27,33 @@
 	]]>\n\t</string>
   <string name="help_request_coins">\n<![CDATA[
 		<p>
-			Mediante este cuadro de diálogo puedes solicitar digitalcoins de otra persona (que debería tener instalada digitalcoin Wallet).
+			Mediante este cuadro de diálogo puedes solicitar smileycoins de otra persona (que debería tener instalada smileycoin Wallet).
 		</p>
 		<p>
-			En primer lugar, puedes introducir la cantidad de digitalcoins que se desea solicitar.
+			En primer lugar, puedes introducir la cantidad de smileycoins que se desea solicitar.
 		</p>
 		<p>
 			A continuación, puedes hacer que la otra persona explore el código QR generado,
 			o bien enviar tu solicitud a una persona remota mediante el botón de compartir de la barra de acciones.
-			La otra persona tendrá que acceder a la URL de digitalcoin.
+			La otra persona tendrá que acceder a la URL de smileycoin.
 		</p>
 		<p>
-			En ambos casos, a la otra persona se le mostrará un cuadro de diálogo para enviar digitalcoins con todos los campos completados.
+			En ambos casos, a la otra persona se le mostrará un cuadro de diálogo para enviar smileycoins con todos los campos completados.
 			Si está de acuerdo, bastará con que acepte la transacción.
 		</p>
 	]]>\n\t</string>
   <string name="help_send_coins">\n<![CDATA[
 		<p>
-			Has iniciado el proceso de enviar digitalcoins.
-			Has llegado aquí bien a través de la pantalla principal o bien al acceder a una URL digitalcoin en tu navegador móvil.
+			Has iniciado el proceso de enviar smileycoins.
+			Has llegado aquí bien a través de la pantalla principal o bien al acceder a una URL smileycoin en tu navegador móvil.
 		</p>
 		<p>
-			En primer lugar, debes introducir la dirección digitalcoin receptora del pago.
+			En primer lugar, debes introducir la dirección smileycoin receptora del pago.
 			La dirección se irá autocompletando con las entradas conocidas de la libreta de direcciones.
-			También puedes explorar códigos QR con direcciones digitalcoin o solicitudes de digitalcoins pulsando el botón QR de la barra de acciones.
+			También puedes explorar códigos QR con direcciones smileycoin o solicitudes de smileycoins pulsando el botón QR de la barra de acciones.
 		</p>
 		<p>
-			A continuación, podrás ver cuántos digitalcoins puedes gastar en este momento.
+			A continuación, podrás ver cuántos smileycoins puedes gastar en este momento.
 			Cualquier discrepancia que haya con el saldo de la pantalla principal se debe a cantidades no confirmadas que aún no pueden gastarse.
 		</p>
 		<p>
@@ -61,7 +61,7 @@
 		</p>
 		<p>
 			Puedes llevar a cabo una transacción sin conexión.
-			Se enviará la siguiente vez que se reinicie digitalcoin Wallet.
+			Se enviará la siguiente vez que se reinicie smileycoin Wallet.
 			Si quieres que se procese una transacción lo más rápido posible, asegúrate de tener una buena conexión (WLAN).
 		</p>
 		<p>
@@ -72,20 +72,20 @@
 	]]>\n\t</string>
   <string name="help_safety">\n<![CDATA[
 		<p>
-			<b>Algunos comentarios sobre la seguridad de tus digitalcoins:</b>
+			<b>Algunos comentarios sobre la seguridad de tus smileycoins:</b>
 		</p>
 		<p>
-			Los digitalcoins en digitalcoin Wallet se almacenan en el dispositivo.
-			<b>Si pierdes tu dispositivo, pierdes tus digitalcoins.</b>
+			Los smileycoins en smileycoin Wallet se almacenan en el dispositivo.
+			<b>Si pierdes tu dispositivo, pierdes tus smileycoins.</b>
 			Esto es lo mismo que ocurriría con tu dinero en una cartera convencional.
 		</p>
 		<p>
-			<b>Antes de desinstalar digitalcoin Wallet</b> (o de eliminar los datos de aplicación o el almacenamiento del dispositivo), <b>transfiere tus digitalcoins a otra cartera</b>.
-			Los digitalcoins que queden en el dispositivo se perderán.
+			<b>Antes de desinstalar smileycoin Wallet</b> (o de eliminar los datos de aplicación o el almacenamiento del dispositivo), <b>transfiere tus smileycoins a otra cartera</b>.
+			Los smileycoins que queden en el dispositivo se perderán.
 		</p>
 		<p>
 			<b>Las transacciones no se pueden deshacer</b>.
-			Si envías digitalcoins por error, no hay manera de recuperarlos a menos que conozcas al receptor y acepte devolvértelos.
+			Si envías smileycoins por error, no hay manera de recuperarlos a menos que conozcas al receptor y acepte devolvértelos.
 		</p>
 		<p>
 			<b>¡Mantén seguro tu dispositivo Android!</b>
@@ -94,7 +94,7 @@
 		</p>
 		<p>
 			¡Minimiza el riesgo!
-			<b>Utiliza digitalcoin Wallet solamente para cantidades pequeñas</b> de uso diario.
+			<b>Utiliza smileycoin Wallet solamente para cantidades pequeñas</b> de uso diario.
 		</p>
 	]]>\n\t</string>
 </resources>

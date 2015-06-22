@@ -18,7 +18,6 @@
 package de.schildbach.wallet.ui;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -42,9 +41,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.Locale;
-import java.util.Map;
 import java.util.zip.GZIPOutputStream;
 
 /**

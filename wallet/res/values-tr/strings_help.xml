@@ -2,11 +2,11 @@
 <resources>
   <string name="help_wallet">\n<![CDATA[
 		<p>
-			Ekranın üst sol köşesi diğer kişilerin size digitalcoin yollayabilmek için bilmeleri seçilen sizin digitalcoin adresinizi gösterir.
+			Ekranın üst sol köşesi diğer kişilerin size smileycoin yollayabilmek için bilmeleri seçilen sizin smileycoin adresinizi gösterir.
 			Adresi değiştirmek için dokunmak yeterlidir.
 		</p>
 		<p>
-			Sağdaki QR code digitalcoin adresinizi içerir ve diğer kişiler tarafından taranmak için kullanılabilir.
+			Sağdaki QR code smileycoin adresinizi içerir ve diğer kişiler tarafından taranmak için kullanılabilir.
 			Daha büyük bir QR code görüntülemek için koda dokununuz.
 		</p>
 		<p>
@@ -21,39 +21,39 @@
 			Listeye filtre uygulamak için sağa ya da sola kaydırabilirsiniz.
 		</p>
 		<p>
-			digitalcoin yollamak ya da talep etmek için etkinlik çubuğunda düğmelere dokunabilirsiniz.
+			smileycoin yollamak ya da talep etmek için etkinlik çubuğunda düğmelere dokunabilirsiniz.
 			Tercihler menüsünde daha fazla seçenek bulabilirsiniz.
 		</p>
 	]]>\n\t</string>
   <string name="help_request_coins">\n<![CDATA[
 		<p>
-			Bu diyaloğu kullanarak başka bir kişiden digitalcoin talep edebilirsiniz (bu kişinin digitalcoin Wallet uygulamasını cihazında kurmuş olması gerekir).
+			Bu diyaloğu kullanarak başka bir kişiden smileycoin talep edebilirsiniz (bu kişinin smileycoin Wallet uygulamasını cihazında kurmuş olması gerekir).
 		</p>
 		<p>
-			İlk olarak talep edilen digitalcoin miktarını girebilirsiniz.
+			İlk olarak talep edilen smileycoin miktarını girebilirsiniz.
 		</p>
 		<p>
 			Ardından ya diğer kişi tarafından taranacak bir QR code oluşturmanız,
 			ya da uzaktaki bir kişiye etkinlik çubuğunda paylaş düğmesiyle talebinizi göndermeniz gerekir.
-			Bu kişinin digitalcoin bağlantısını tıklaması gerekecektir.
+			Bu kişinin smileycoin bağlantısını tıklaması gerekecektir.
 		</p>
 		<p>
-			Her durumda diğer kişiye digitalcoin göndermesi için tüm seçenekleri doldurulmuş bir diyalog gösterilecektir.
+			Her durumda diğer kişiye smileycoin göndermesi için tüm seçenekleri doldurulmuş bir diyalog gösterilecektir.
 			Kabul ederse tüm yapması gereken muameleyi yollamaktır.
 		</p>
 	]]>\n\t</string>
   <string name="help_send_coins">\n<![CDATA[
 		<p>
-			digitalcoin gönderme prosedürünü başlattınız.
-			Buraya ya ana ekrandan ya da mobil ağ tarayıcınızda bir digitalcoin bağlantısına tıklayarak geldiniz.
+			smileycoin gönderme prosedürünü başlattınız.
+			Buraya ya ana ekrandan ya da mobil ağ tarayıcınızda bir smileycoin bağlantısına tıklayarak geldiniz.
 		</p>
 		<p>
-			İlk olarak ödeme yapacağınız digitalcoin adresini girmelisiniz.
+			İlk olarak ödeme yapacağınız smileycoin adresini girmelisiniz.
 			Adres defterinizde bilinen adreslere dayanılarak adres otomatik olarak tamamlanacaktır.
-			Ayrıca etkinlik çubuğunda QR düğmesine dokunarak digitalcoin adresi ya da talebi içeren QR kodlarını tarayabilirsiniz.
+			Ayrıca etkinlik çubuğunda QR düğmesine dokunarak smileycoin adresi ya da talebi içeren QR kodlarını tarayabilirsiniz.
 		</p>
 		<p>
-			Bunun ardından o anda ne kadar digitalcoin harcayabileceğinizi görüntüleyebilirsiniz.
+			Bunun ardından o anda ne kadar smileycoin harcayabileceğinizi görüntüleyebilirsiniz.
 			Varsa ana ekrandaki bakiye ile farklılıklar henüz teyit edilmemiştir ve dolayısıyla henüz harcanamaz.
 		</p>
 		<p>
@@ -61,7 +61,7 @@
 		</p>
 		<p>
 			Çevrimdışı olduğunuz sırada bir muamele girebilirsiniz.
-			digitalcoin Wallet uygulamasının sonraki açılışında gönderilir.
+			smileycoin Wallet uygulamasının sonraki açılışında gönderilir.
 			Bir muamelenin mümkün olduğu kadar çabuk işlenmesini istiyorsanız bağlantınızın iyi olduğundan (mesela WLAN ile).
 		</p>
 		<p>
@@ -72,20 +72,20 @@
 	]]>\n\t</string>
   <string name="help_safety">\n<![CDATA[
 		<p>
-			<b>digitalcoinlerinizin güvenliği hakkında önemli noktalar:</b>
+			<b>smileycoinlerinizin güvenliği hakkında önemli noktalar:</b>
 		</p>
 		<p>
-			digitalcoin cüzdanınızdaki digitalcoinler cihazınızda saklanır.
-			<b>Cihazınızı kaybederseniz digitalcoinlerinizi de kaybedersiniz.</b>
+			smileycoin cüzdanınızdaki smileycoinler cihazınızda saklanır.
+			<b>Cihazınızı kaybederseniz smileycoinlerinizi de kaybedersiniz.</b>
 			Tıpkı fiziki cüzdanınızdaki para gibi.
 		</p>
 		<p>
-			<b>digitalcoin Wallet</b> uygulamasını kaldırmadan önce (ya da uygulama verilerini/cihazınızı sıfırlamadan önce) <b>tüm digitalcoinlerinizi başka bir cüzdana aktarınız</b>.
-			Kalan tüm digitalcoinler kaybolacaktır.
+			<b>smileycoin Wallet</b> uygulamasını kaldırmadan önce (ya da uygulama verilerini/cihazınızı sıfırlamadan önce) <b>tüm smileycoinlerinizi başka bir cüzdana aktarınız</b>.
+			Kalan tüm smileycoinler kaybolacaktır.
 		</p>
 		<p>
 			<b>Muameleler geri alınamaz</b>.
-			digitalcoinlerinizi yanlış bir adrese yollarsanız, bunları geri almak için alıcıyı tanımanız ve onun geri yollamayı kabul etmeniz dışında hiçbir yol yoktur.
+			smileycoinlerinizi yanlış bir adrese yollarsanız, bunları geri almak için alıcıyı tanımanız ve onun geri yollamayı kabul etmeniz dışında hiçbir yol yoktur.
 		</p>
 		<p>
 			<b>Android cihazınızı güvenli kullanın!</b>
@@ -94,7 +94,7 @@
 		</p>
 		<p>
 			Riski sınırlayın!
-			<b>digitalcoin Wallet uygulamasını sadece küçük tutarlar için kullanınız</b>.
+			<b>smileycoin Wallet uygulamasını sadece küçük tutarlar için kullanınız</b>.
 		</p>
 	]]>\n\t</string>
 </resources>

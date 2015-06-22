@@ -23,7 +23,6 @@ import javax.annotation.CheckForNull;
 
 import com.google.bitcoin.core.Peer;
 import com.google.bitcoin.core.StoredBlock;
-import hashengineering.digitalcoin.wallet.R;
 
 /**
  * @author Andreas Schildbach

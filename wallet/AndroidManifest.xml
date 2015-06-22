@@ -2,7 +2,7 @@
 <!-- Need to update this for the coin -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	package="hashengineering.digitalcoin.wallet"
+	package="hashengineering.smileycoin.wallet"
 	android:installLocation="internalOnly"
 
 	android:versionCode="3003563"
@@ -67,16 +67,22 @@
 		<activity
 			android:name="de.schildbach.wallet.ui.WalletActivity"
 			android:configChanges="keyboard|keyboardHidden"
-			android:launchMode="singleTask" />
-
-		<activity-alias
-			android:name="de.schildbach.wallet.WalletActivity"
-			android:targetActivity="de.schildbach.wallet.ui.WalletActivity" >
+			android:launchMode="singleTask" >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
+		</activity>
+
+		<activity-alias
+			android:name="de.schildbach.wallet.WalletActivity"
+			android:targetActivity="de.schildbach.wallet.ui.WalletActivity" >
+			<!--<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>-->
 			<intent-filter>
 				<action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
