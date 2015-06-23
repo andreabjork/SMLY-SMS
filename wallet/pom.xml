@@ -61,7 +61,6 @@
 		<!-- com.google.bitcoin.* -->
 		<dependency>
 			<groupId>com.google</groupId>
-
 			<artifactId>digitalcoinj</artifactId>
 			<version>0.12-SNAPSHOT</version>
 

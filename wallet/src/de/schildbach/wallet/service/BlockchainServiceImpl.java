@@ -48,7 +48,7 @@ import de.schildbach.wallet.util.CrashReporter;
 import de.schildbach.wallet.util.GenericUtils;
 import de.schildbach.wallet.util.ThrottlingWalletChangeListener;
 import de.schildbach.wallet.util.WalletUtils;
-import hashengineering.digitalcoin.wallet.R;
+import hashengineering.smileycoin.wallet.R;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

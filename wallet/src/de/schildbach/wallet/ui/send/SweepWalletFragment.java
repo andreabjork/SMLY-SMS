@@ -54,7 +54,7 @@ import de.schildbach.wallet.ui.ScanActivity;
 import de.schildbach.wallet.ui.TransactionsListAdapter;
 import de.schildbach.wallet.util.GenericUtils;
 import de.schildbach.wallet.util.WalletUtils;
-import hashengineering.digitalcoin.wallet.R;
+import hashengineering.smileycoin.wallet.R;
 
 /**
  * @author Maximilian Keller

@@ -28,7 +28,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.google.bitcoin.core.ECKey;
 
 import de.schildbach.wallet.ui.AbstractBindServiceActivity;
-import hashengineering.digitalcoin.wallet.R;
+import hashengineering.smileycoin.wallet.R;
 
 /**
  * @author Andreas Schildbach

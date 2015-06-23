@@ -27,7 +27,7 @@ import com.google.bitcoin.core.NetworkParameters;
 import com.google.bitcoin.params.MainNetParams;
 import com.google.bitcoin.params.TestNet3Params;
 import com.google.bitcoin.core.CoinDefinition;
-import hashengineering.digitalcoin.wallet.R;
+import hashengineering.smileycoin.wallet.R;
 
 /**
  * @author Andreas Schildbach
