@@ -154,19 +154,19 @@ public final class Constants
 
     public static final String FORKED_FROM_SOURCE = "based on bitcoin-wallet 3.55\n";
     public static final String FORKED_FROM_SOURCE_BITCOINJ = "based on bitcoinj 0.12\n";
-	public static final String SOURCE_URL = "https://github.com/HashEngineering/" + CoinDefinition.coinName.toLowerCase() + "-wallet";
-	public static final String BINARY_URL = "https://github.com/HashEngineering/"+ CoinDefinition.coinName.toLowerCase() +"-wallet/releases";
-	public static final String CREDITS_BITCOINJ_URL = "https://github.com/HashEngineering/" + CoinDefinition.coinName.toLowerCase() + "j";
+	public static final String SOURCE_URL = "https://github.com/tutor-web/smileycoin-android";
+	public static final String BINARY_URL = "https://github.com/tutor-web/smileycoin-android/releases";
+	public static final String CREDITS_BITCOINJ_URL = "https://github.com/tutor-web/smileycoinj";
 	public static final String CREDITS_ZXING_URL = "http://code.google.com/p/zxing/";
     public static final String CREDITS_WEBSITE_URL = "http://tutor-web.info/smileycoin";
     public static final String CREDITS_FORUM_URL = "https://bitcointalk.org/index.php?topic=845761.0";
 
-	public static final String CREDITS_ICON_URL = "https://bitcointalk.org/index.php?action=profile;u=2062";
+	public static final String CREDITS_ICON_URL = "https://bitcointalk.org/index.php?action=profile;u=361911";
 
-	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/HashEngineering";
-	public static final String AUTHOR_GOOGLEPLUS_URL = "https://profiles.google.com/HashEngineering";
+	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/gstefans?lang=en";
+	public static final String AUTHOR_GOOGLEPLUS_URL = "";//"https://profiles.google.com/HashEngineering";
 
-	public static final String COMMUNITY_GOOGLEPLUS_URL = "https://plus.google.com/communities/105515929887248493912";
+	public static final String COMMUNITY_GOOGLEPLUS_URL = "";//"https://plus.google.com/communities/105515929887248493912";
 
 	public static final String MARKET_APP_URL = "market://details?id=%s";
 	public static final String WEBMARKET_APP_URL = "https://play.google.com/store/apps/details?id=%s";

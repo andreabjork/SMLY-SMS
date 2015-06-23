@@ -128,7 +128,6 @@ public class ExchangeRatesProvider extends ContentProvider
 	public boolean onCreate()
 	{
 		final Context context = getContext();
-
 		this.config = new Configuration(PreferenceManager.getDefaultSharedPreferences(context));
 
 		this.userAgent = WalletApplication.httpUserAgent(WalletApplication.packageInfoFromContext(context).versionName);
@@ -145,7 +144,8 @@ public class ExchangeRatesProvider extends ContentProvider
 
 	public static Uri contentUri(@Nonnull final String packageName)
 	{
-		return Uri.parse("content://" + packageName + '.' + "exchange_rates");
+		return Uri.parse("content://hashengineering.digitalcoin.wallet.exchange_rates");		
+		//return Uri.parse("content://" + packageName + '.' + "exchange_rates");
 	}
 
 	@Override

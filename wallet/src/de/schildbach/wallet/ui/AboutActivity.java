@@ -73,7 +73,7 @@ public final class AboutActivity extends SherlockPreferenceActivity
 		findPreference(KEY_ABOUT_CREDITS_ZXING).setSummary(Constants.CREDITS_ZXING_URL);
 
 		//findPreference(KEY_ABOUT_CREDITS_ICON).setSummary(Constants.CREDITS_ICON_URL);
-		findPreference(KEY_ABOUT_MARKET_APP).setSummary(String.format(Constants.MARKET_APP_URL, getPackageName()));
+		//findPreference(KEY_ABOUT_MARKET_APP).setSummary(String.format(Constants.MARKET_APP_URL, getPackageName()));
 		//findPreference(KEY_ABOUT_MARKET_PUBLISHER).setSummary(Constants.MARKET_PUBLISHER_URL);
         findPreference(KEY_ABOUT_CREDITS_WEBSITE).setSummary(Constants.CREDITS_WEBSITE_URL);
         findPreference(KEY_ABOUT_CREDITS_FORUM).setSummary(Constants.CREDITS_FORUM_URL);
