@@ -6,8 +6,8 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>0.2.0</version>
-	<name>digitalcoin Wallet</name>
+	<version>1.0</version>
+	<name>Smileycoin Wallet</name>
 
 
 	<parent>
@@ -61,8 +61,8 @@
 		<!-- com.google.bitcoin.* -->
 		<dependency>
 			<groupId>com.google</groupId>
-			<artifactId>digitalcoinj</artifactId>
-			<version>0.12-SNAPSHOT</version>
+			<artifactId>smileycoinj</artifactId>
+			<version>1.0</version>
 
 		</dependency>
 
