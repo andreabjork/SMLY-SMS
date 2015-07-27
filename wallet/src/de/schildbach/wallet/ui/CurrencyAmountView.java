@@ -17,12 +17,6 @@
 
 package de.schildbach.wallet.ui;
 
-import java.math.BigInteger;
-
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint;
@@ -43,6 +37,12 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.bitcoin.core.Transaction;
+
+import java.math.BigInteger;
+
+import javax.annotation.CheckForNull;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.util.GenericUtils;
@@ -210,11 +210,9 @@ public final class CurrencyAmountView extends FrameLayout
 		if (!fireListener)
 			textViewListener.setFire(false);
 
-		if (amount != null)
-			textView.setText(amountSigned ? GenericUtils.formatValue(amount, Constants.CURRENCY_PLUS_SIGN, Constants.CURRENCY_MINUS_SIGN,
+		if (amount != null) textView.setText(amountSigned ? GenericUtils.formatValue(amount, Constants.CURRENCY_PLUS_SIGN, Constants.CURRENCY_MINUS_SIGN,
 					inputPrecision, shift) : GenericUtils.formatValue(amount, inputPrecision, shift));
-		else
-			textView.setText(null);
+		else textView.setText(null);
 
 		if (!fireListener)
 			textViewListener.setFire(true);

@@ -1,4 +1,4 @@
-Havu viajn Bitmonojn ĉiam kun vi, en via poŝo! Vi povas pagi per rapide skanado de QR-kodo. Kiel komercisto, vi povas ricevi pagojn fidinde kaj tuj. digitalcoin Wallet estas unua movebla Bitmona aplikaĵo, kaj disputeble ankaŭ la plej sekura!
+Havu viajn Bitmonojn ĉiam kun vi, en via poŝo! Vi povas pagi per rapide skanado de QR-kodo. Kiel komercisto, vi povas ricevi pagojn fidinde kaj tuj. smileycoin Wallet estas unua movebla Bitmona aplikaĵo, kaj disputeble ankaŭ la plej sekura!
 
 TRAJTOJ:
 
@@ -12,10 +12,10 @@ TRAJTOJ:
 • Aplikaĵa fenestraĵo por Bitmona saldo.
 
 Vi povas trovi pli pri Bitmono ĉe
-http://digitalcoin.co
+http://tutor-web.info/smileycoin
 
-Se vi volas kontribui al digitalcoin Wallet, la projekto lokas ĉe
-https://github.com/HashEngineering/digitalcoin-wallet
+Se vi volas kontribui al smileycoin Wallet, la projekto lokas ĉe
+https://github.com/tutor-web/smileycoin-android
 
 Licenco: GPLv3
 Uzu je via propra risko!

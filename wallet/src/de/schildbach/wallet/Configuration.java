@@ -17,17 +17,18 @@
 
 package de.schildbach.wallet;
 
-import java.math.BigInteger;
-
-import javax.annotation.Nonnull;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.text.format.DateUtils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.math.BigInteger;
+
+import javax.annotation.Nonnull;
+
 import de.schildbach.wallet.ExchangeRatesProvider.ExchangeRate;
 
 /**

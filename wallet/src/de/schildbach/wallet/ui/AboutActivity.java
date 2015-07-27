@@ -66,7 +66,7 @@ public final class AboutActivity extends SherlockPreferenceActivity
 		findPreference(KEY_ABOUT_LICENSE).setSummary(Constants.LICENSE_URL);
 		findPreference(KEY_ABOUT_SOURCE).setSummary(Constants.FORKED_FROM_SOURCE +Constants.SOURCE_URL);
 
-		findPreference(KEY_ABOUT_MARKET_PUBLISHER).setSummary(Constants.MARKET_PUBLISHER_URL);
+		//findPreference(KEY_ABOUT_MARKET_PUBLISHER).setSummary(Constants.MARKET_PUBLISHER_URL);
 
 		findPreference(KEY_ABOUT_CREDITS_BITCOINJ).setTitle(getString(R.string.about_credits_bitcoinj_title, VersionMessage.BITCOINJ_VERSION));
 		findPreference(KEY_ABOUT_CREDITS_BITCOINJ).setSummary(Constants.FORKED_FROM_SOURCE_BITCOINJ+Constants.CREDITS_BITCOINJ_URL);
@@ -141,12 +141,12 @@ public final class AboutActivity extends SherlockPreferenceActivity
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.AUTHOR_GOOGLEPLUS_URL)));
 			finish();
         }
-		else if (KEY_ABOUT_MARKET_PUBLISHER.equals(key))
+		else /*if (KEY_ABOUT_MARKET_PUBLISHER.equals(key))
 		{
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.MARKET_PUBLISHER_URL)));
 			finish();
 		}
-		else if (KEY_ABOUT_CREDITS_BITCOINJ.equals(key))
+		else*/ if (KEY_ABOUT_CREDITS_BITCOINJ.equals(key))
 		{
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.CREDITS_BITCOINJ_URL)));
 			finish();

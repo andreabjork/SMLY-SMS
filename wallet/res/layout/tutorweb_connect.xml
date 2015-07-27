@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/tutorweb_connect">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30px"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Connect to Tutor Web"
+        android:id="@+id/textView6"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Username:"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/url_spinner"
+        android:layout_alignLeft="@+id/textView6" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/usernameEdit"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Password:"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/usernameEdit"
+        android:layout_alignLeft="@+id/textView5" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordEdit"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentRight="true" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></RelativeLayout>
+
+    <Button
+        android:layout_width="281dp"
+        android:layout_height="wrap_content"
+        android:text="Connect"
+        android:id="@+id/connectBtn"
+        android:onClick="TutorWebLogin"
+        style="@style/TutorWebButtons"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/connect_error_message"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/connect_error_message"
+        android:layout_alignRight="@+id/connectBtn"
+        android:layout_alignLeft="@+id/connectBtn"
+        android:layout_below="@+id/passwordEdit"
+        android:gravity="center"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/tutorweb_sites"
+        android:id="@+id/url_spinner"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

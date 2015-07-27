@@ -109,7 +109,7 @@
 	<string name="address_book_options_paste_from_clipboard_empty">Área de transferência vazia</string>
 	<string name="address_book_options_paste_from_clipboard_invalid">Dados da área de transferência irreconhecíveis</string>
 	<string name="address_book_options_scan_title">Escanear endereço</string>
-	<string name="address_book_options_scan_invalid">Os dados digitalizados estão irreconhecíveis</string>
+	<string name="address_book_options_scan_invalid">Os dados smileyizados estão irreconhecíveis</string>
 	<string name="address_book_row_message_compromised_key">Este endereço pode ser comprometido. Você não deve mais usá-lo para receber moedas.</string>
 	<string name="edit_address_book_entry_dialog_title_add">Adicionar endereço</string>
 	<string name="edit_address_book_entry_dialog_title_edit">Editar endereço</string>

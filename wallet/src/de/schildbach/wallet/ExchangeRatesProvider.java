@@ -17,34 +17,6 @@
 
 package de.schildbach.wallet;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.math.BigInteger;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import java.util.Currency;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.zip.GZIPInputStream;
-
-
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
-
-import com.google.bitcoin.core.CoinDefinition;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
@@ -55,7 +27,32 @@ import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
 import android.text.format.DateUtils;
 
+import com.google.bitcoin.core.CoinDefinition;
 import com.google.common.base.Charsets;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.math.BigInteger;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Currency;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.zip.GZIPInputStream;
+
+import javax.annotation.CheckForNull;
+import javax.annotation.Nonnull;
 
 import de.schildbach.wallet.util.GenericUtils;
 import de.schildbach.wallet.util.Io;
@@ -144,7 +141,7 @@ public class ExchangeRatesProvider extends ContentProvider
 
 	public static Uri contentUri(@Nonnull final String packageName)
 	{
-		return Uri.parse("content://hashengineering.digitalcoin.wallet.exchange_rates");		
+		return Uri.parse("content://hashengineering.smileycoin.wallet.exchange_rates");		
 		//return Uri.parse("content://" + packageName + '.' + "exchange_rates");
 	}
 
@@ -304,8 +301,8 @@ public class ExchangeRatesProvider extends ContentProvider
                 Io.copy(reader, contentCryptsy);
 				log.info("This is the response: "+contentCryptsy.toString());
                 final JSONObject head = new JSONObject(contentCryptsy.toString());
-		JSONObject ticker = head.getJSONObject("ticker");
-		double averageTrade = ticker.getDouble("avg");
+				JSONObject ticker = head.getJSONObject("ticker");
+				double averageTrade = ticker.getDouble("avg");
 // When using cryptsy.com:
 //                JSONObject returnObject = head.getJSONObject("return");
 //                JSONObject markets = returnObject.getJSONObject("markets");

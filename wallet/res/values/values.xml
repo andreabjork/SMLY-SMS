@@ -16,11 +16,11 @@
 		<item>0/6</item>
 	</string-array>
 	<string-array name="preferences_precision_labels">
-		<item>DGC, 8 digits</item>
-		<item>DGC, 6 digits</item>
-		<item>DGC, 4 digits</item>
-		<item>mDGC, 2 digits</item>
-		<item>µDGC, no digits</item>
+		<item>SMLY, 8 digits</item>
+		<item>SMLY, 6 digits</item>
+		<item>SMLY, 4 digits</item>
+		<item>mSMLY, 2 digits</item>
+		<item>µSMLY, no digits</item>
 	</string-array>
 
 </resources>

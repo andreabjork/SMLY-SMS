@@ -12,10 +12,10 @@
 • 比特币余额的应用程式。
 
 你可以找到更多关于比特币的
-http://digitalcoin.co
+http://tutor-web.info/smileycoin
 
 如果你想参与比特币钱包维护，该项目位于
-https://github.com/HashEngineering/digitalcoin-wallet
+https://github.com/tutor-web/smileycoin-android
 
 授权: GPLv3
 您使用的风险!

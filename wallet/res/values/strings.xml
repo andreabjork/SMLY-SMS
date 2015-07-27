@@ -17,6 +17,7 @@
 	<string name="wallet_addresses_fragment_add_dialog_title">Add smileycoin address</string>
 	<string name="wallet_addresses_fragment_add_dialog_message">Smileycoin addresses cannot be deleted. Do you want to add a new address to your wallet?</string>
 	<string name="wallet_balance_fragment_replaying">Balance is unavailable during replay.</string>
+	<string name="earn_smileycoins_activity_title">Earn smileycoins</string>
 	<string name="exchange_rates_activity_title">Exchange Rates</string>
 	<string name="exchange_rates_fragment_empty_text">Could not load exchange rates.</string>
 	<string name="exchange_rates_fragment_empty_search">Could not find exchange rate.</string>
@@ -94,6 +95,11 @@
 	<string name="sweep_wallet_fragment_insufficient_money_title">Not enough coins</string>
 	<string name="sweep_wallet_fragment_insufficient_money_msg">The amount of coins in the wallet is too small for sweeping.</string>
 	<string name="sweep_wallet_options_reload">Reload balance</string>
+	<string name="redeem_coins_amount_label">SMLY earned</string>
+	<string name="redeem_coins_receiving_address_label">Receiving address:</string>
+	<string name ="redeem_coins_title">Redeem SMLY earned on Tutor-Web!</string>
+	<string name="redeem_coins_receiving_address"></string>
+	<string name="redeem_coins_fragment_fee"></string>
 	<string name="request_coins_activity_title">Request smileycoins</string>
 	<string name="request_coins_fragment_amount_label">Requested amount (optional)</string>
 	<string name="request_coins_fragment_accept_bluetooth_payment">Accept payment via Bluetooth for more reliable processing</string>
@@ -131,6 +137,12 @@
 	<string name="transaction_row_message_received_unconfirmed_locked">This payment is not standard and should not be trusted.</string>
 	<string name="transaction_row_message_received_dead">This payment has been reversed by the sender.</string>
 	<string name="transaction_row_message_received_dust">This small amount can probably never be spent economically.</string>
+	<string name="tutorweb_activity_title">Tutor Web</string>
+	<string name="tutorweb_about_title">About the Tutor Web Project</string>
+	<string name="tutorweb_connect_title">Connect to Tutor Web</string>
+	<string name="tutorweb_earn_title">How to earn SMLY</string>
+	<string name="tutorweb_redeem_title">Redeem coins</string>
+	<string name="tutorweb_spend_title">Spending your SMLY</string>
 	<string name="network_monitor_activity_title">Network monitor</string>
 	<string name="network_monitor_peer_list_title">Peers</string>
 	<string name="network_monitor_block_list_title">Blocks</string>
@@ -254,4 +266,23 @@
 	<string name="error_http">HTTP error %1$s:\n%2$s</string>
 	<string name="error_bluetooth">Bluetooth error %1$s</string>
 
+	<string-array name="tutorweb_sites">
+		<item>Tutor Web</item>
+		<item>Education in a Suitcase</item>
+	</string-array>
+
+	<string name="earn_smileycoin_text">
+		You can earn smileycoins by solving exercises on tutor-web.net. Each lecture has a drill with multiple choice questions. If you complete a drill with a passingrade, you receive smileycoin on the Tutor Web site which can later be redeemed through this app.
+	<br/>
+	<br></br>
+	To take a drill, select the tutor-web server you wish to connect to and click the button below to start working on your exercise!"
+	</string>
+	<string name="about_tutorweb">
+		The smileycoin,  SMLY, is an electronic currency used for rewarding
+students for their performance in the tutor-web learning environment. The
+tutor-web is a freely accessible educational tool with free educational
+material and a built-in drilling system.
+	</string>
+	<string name="spend_url">More information at <a href="https://c-cex.com/?p=smly-btc">c-cex.com</a></string>
+	<string name="about_smly_url"><a href="http://tutor-web.info/information">Click here</a> if you wish to learn more about the Tutor Web Project and <a href="http://tutor-web.info/smileycoin">here</a> to learn more about smileycoin.</string>
 </resources>

@@ -17,15 +17,6 @@
 
 package de.schildbach.wallet.ui;
 
-import java.math.BigInteger;
-
-import javax.annotation.CheckForNull;
-
-
-import com.google.bitcoin.core.CoinDefinition;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
@@ -58,8 +49,16 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.bitcoin.core.Address;
+import com.google.bitcoin.core.CoinDefinition;
 import com.google.bitcoin.core.Wallet;
 import com.google.bitcoin.uri.BitcoinURI;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.math.BigInteger;
+
+import javax.annotation.CheckForNull;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;

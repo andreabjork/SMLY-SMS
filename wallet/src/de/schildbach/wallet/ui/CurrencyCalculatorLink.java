@@ -17,13 +17,14 @@
 
 package de.schildbach.wallet.ui;
 
+import android.view.View;
+
 import java.math.BigInteger;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import android.view.View;
 import de.schildbach.wallet.ExchangeRatesProvider.ExchangeRate;
 import de.schildbach.wallet.ui.CurrencyAmountView.Listener;
 import de.schildbach.wallet.util.WalletUtils;

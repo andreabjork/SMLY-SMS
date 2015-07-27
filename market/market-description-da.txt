@@ -1,39 +1,39 @@
 <<<<<<< HEAD
-Hav altid dine digitalcoins med dig i din lomme! Du betaler ved hurtigt at scanne en QR-kode. Som handlende kan du modtage betalinger pålideligt og øjeblikkeligt. digitalcoin Wallet er den første mobile digitalcoin-app, og muligvis også den mest sikre!
+Hav altid dine smileycoins med dig i din lomme! Du betaler ved hurtigt at scanne en QR-kode. Som handlende kan du modtage betalinger pålideligt og øjeblikkeligt. smileycoin Wallet er den første mobile smileycoin-app, og muligvis også den mest sikre!
 =======
-<b>Hav altid dine digitalcoins med dig i din lomme!</b> Du betaler ved hurtigt at scanne en QR-kode. Som handlende kan du modtage betalinger pålideligt og øjeblikkeligt. digitalcoin Wallet er den første mobile digitalcoin-app, og muligvis også den mest sikre!
+<b>Hav altid dine smileycoins med dig i din lomme!</b> Du betaler ved hurtigt at scanne en QR-kode. Som handlende kan du modtage betalinger pålideligt og øjeblikkeligt. smileycoin Wallet er den første mobile smileycoin-app, og muligvis også den mest sikre!
 >>>>>>> upstream/master
 
 
 <b>FUNKTIONER</b>
 
 • Ingen registrering, webservice eller sky behøves! Tegnebogen er decentraliseret og peer-to-peer.
-• Visning af digitalcoin-beløb i DGC, mDGC og µDGC.
+• Visning af smileycoin-beløb i DGC, mDGC og µDGC.
 • Konvertering til og fra lokale valutaer.
-• Afsendelse og modtagelse af digitalcoin via NFC, QR-koder eller digitalcoin-URLer.
-• Adressebog til ofte brugte digitalcoin-adresser.
+• Afsendelse og modtagelse af smileycoin via NFC, QR-koder eller smileycoin-URLer.
+• Adressebog til ofte brugte smileycoin-adresser.
 • Når du er offline, kan du stadig betale via Bluetooth.
 • Systemnotifikation for modtagne mønter.
 <<<<<<< HEAD
-• App-widget for digitalcoin-saldo.
+• App-widget for smileycoin-saldo.
 
-Du kan finde mere om digitalcoin på
-http://digitalcoin.co
+Du kan finde mere om smileycoin på
+http://tutor-web.info/smileycoin
 
-Hvis du vil bidrage til digitalcoin Wallet, kan projektet findes på
-https://github.com/HashEngineering/digitalcoin-wallet
+Hvis du vil bidrage til smileycoin Wallet, kan projektet findes på
+https://github.com/tutor-web/smileycoin-android
 =======
 • Rydning af papirtegnebøger (fx de der bruges til kold opbevaring).
-• App-widget for digitalcoin-saldo.
+• App-widget for smileycoin-saldo.
 
 
 <b>BIDRAG</b>
 
-digitalcoin Wallet er <b>fri software</b> med <b>åben kildekode</b>. Licens: GPLv3
+smileycoin Wallet er <b>fri software</b> med <b>åben kildekode</b>. Licens: GPLv3
 https://www.gnu.org/licenses/gpl-3.0.en.html
 
 Vores kildekode er tilgængelig på GitHub:
-https://github.com/HashEngineering/digitalcoin-wallet
+https://github.com/tutor-web/smileycoin-android
 >>>>>>> upstream/master
 
 Alle oversættelser håndteres via Transifex:
@@ -42,8 +42,8 @@ https://www.transifex.com/projects/p/bitcoin-wallet/
 
 <b>ANBEFALINGER</b>
 
-• Mange mobile tegnebøger baserer deres kode på digitalcoin Wallet. Eksempler: blockchain.info, Hive og KnC.
-• Anbefalet mobil-tegnebog af http://digitalcoin.co
+• Mange mobile tegnebøger baserer deres kode på smileycoin Wallet. Eksempler: blockchain.info, Hive og KnC.
+• Anbefalet mobil-tegnebog af http://tutor-web.info/smileycoin
 • Anbefalet af BitPay.
 
 

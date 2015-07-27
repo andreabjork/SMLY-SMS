@@ -101,7 +101,7 @@
 			<intent-filter android:label="@string/send_coins_activity_title" >
 				<action android:name="android.intent.action.VIEW" />
 
-				<data android:scheme="digitalcoin" />
+				<data android:scheme="smileycoin" />
 
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
@@ -109,21 +109,21 @@
 			<intent-filter android:label="@string/send_coins_activity_title" >
 				<action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
-				<data android:scheme="digitalcoin" />
+				<data android:scheme="smileycoin" />
 
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 			<intent-filter android:label="@string/send_coins_activity_title" >
 				<action android:name="android.intent.action.VIEW" />
 
-				<data android:mimeType="application/digitalcoin-paymentrequest" />
+				<data android:mimeType="application/smileycoin-paymentrequest" />
 
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 			<intent-filter android:label="@string/send_coins_activity_title" >
 				<action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
-				<data android:mimeType="application/digitalcoin-paymentrequest" />
+				<data android:mimeType="application/smileycoin-paymentrequest" />
 
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
@@ -159,6 +159,30 @@
 			android:label="@string/address_book_activity_title"
 			android:screenOrientation="behind" />
 		<activity
+			android:name="de.schildbach.wallet.ui.TutorWebActivity"
+			android:label="@string/tutorweb_activity_title"
+			android:screenOrientation="behind" />
+		<activity
+			android:name="de.schildbach.wallet.ui.TutorWebAboutActivity"
+			android:label="@string/tutorweb_about_title"
+			android:screenOrientation="behind" />
+		<activity
+			android:name="de.schildbach.wallet.ui.TutorWebEarnActivity"
+			android:label="@string/tutorweb_earn_title"
+			android:screenOrientation="behind" />
+		<activity
+			android:name="de.schildbach.wallet.ui.TutorWebConnectActivity"
+			android:label="@string/tutorweb_connect_title"
+			android:screenOrientation="behind" />
+		<activity
+			android:name="de.schildbach.wallet.ui.TutorWebRedeemActivity"
+			android:label="@string/tutorweb_redeem_title"
+			android:screenOrientation="behind" />
+		<activity
+			android:name="de.schildbach.wallet.ui.TutorWebSpendActivity"
+			android:label="@string/tutorweb_spend_title"
+			android:screenOrientation="behind" />
+		<activity
 			android:name="de.schildbach.wallet.ui.ExchangeRatesActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:label="@string/exchange_rates_activity_title"
@@ -185,7 +209,7 @@
 
 				<category android:name="android.intent.category.DEFAULT" />
 
-				<data android:mimeType="application/x-digitalcoin-wallet-backup" />
+				<data android:mimeType="application/x-smileycoin-wallet-backup" />
 				<data android:mimeType="application/octet-stream" />
 			</intent-filter>
 		</activity>
@@ -206,17 +230,17 @@
 
 		<provider
 			android:name="de.schildbach.wallet.AddressBookProvider"
-			android:authorities="hashengineering.digitalcoin.wallet.address_book"
+			android:authorities="hashengineering.smileycoin.wallet.address_book"
 			android:exported="false" />
         <!-- Need to update this for the coin -->
 		<provider
 			android:name="de.schildbach.wallet.ExchangeRatesProvider"
-			android:authorities="hashengineering.digitalcoin.wallet.exchange_rates"
+			android:authorities="hashengineering.smileycoin.wallet.exchange_rates"
 			android:exported="false" />
 
 		<receiver
 			android:name="de.schildbach.wallet.WalletBalanceWidgetProvider"
-			android:label="digitalcoin Wallet Balance" >
+			android:label="smileycoin Wallet Balance" >
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>

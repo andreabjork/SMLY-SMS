@@ -1,24 +1,24 @@
-<b>Draag je digitalcoins altijd bij je, in je broekzak!</b> Je kunt vlot betalen door een QR-code te scannen. Als handelaar ontvang je je betalingen betrouwbaar en onmiddelijk. digitalcoin Wallet is de eerste mobiele digitalcoin-app, en misschien wel de veiligste!
+<b>Draag je smileycoins altijd bij je, in je broekzak!</b> Je kunt vlot betalen door een QR-code te scannen. Als handelaar ontvang je je betalingen betrouwbaar en onmiddelijk. smileycoin Wallet is de eerste mobiele smileycoin-app, en misschien wel de veiligste!
 
 <b>FEATURES</b>
 
 • Geen registratie, webservice of cloud vereist! De portemonnee is decentraal en peer-to-peer.
-• Geef het digitalcoin-bedrag weer in DGC, mDGC en µDGC.
+• Geef het smileycoin-bedrag weer in DGC, mDGC en µDGC.
 • Conversie van en naar nationale valuta.
-* Verzend en ontvang digitalcoin via NFC, QR-codes of digitalcoin-URL's
-• Adresboek voor regelmatig gebruikte digitalcoin-adressen.
+* Verzend en ontvang smileycoin via NFC, QR-codes of smileycoin-URL's
+• Adresboek voor regelmatig gebruikte smileycoin-adressen.
 • Ook offline toch betalen via Bluetooth
-• Systeemmelding wanneer je digitalcoins ontvangt
-• App widget voor digitalcoin saldo.
+• Systeemmelding wanneer je smileycoins ontvangt
+• App widget voor smileycoin saldo.
 
 
 <b>HELP MEE</b>
 
-digitalcoin Wallet is <b>open source</b> en <b>free software</b>. Licentie: GPLv3
+smileycoin Wallet is <b>open source</b> en <b>free software</b>. Licentie: GPLv3
 https://www.gnu.org/licenses/gpl-3.0.en.html
 
 Onze broncode is beschikbaar op GitHub:
-https://github.com/HashEngineering/digitalcoin-wallet
+https://github.com/tutor-web/smileycoin-android
 
 Alle vertalingen worden geregeld via Transifex:
 https://www.transifex.com/projects/p/bitcoin-wallet/
@@ -26,7 +26,7 @@ https://www.transifex.com/projects/p/bitcoin-wallet/
 
 <b>TESTIMONIALS</b>
 
-* Aanbevolen mobiele portemonnee op http://digitalcoin.co
+* Aanbevolen mobiele portemonnee op http://tutor-web.info/smileycoin
 
 
 <i>Gebruik op eigen risico!</i>

@@ -17,33 +17,6 @@
 
 package de.schildbach.wallet.ui;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.Writer;
-import java.text.DateFormat;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.TimeZone;
-
-import javax.annotation.Nonnull;
-
-
-import org.bitcoinj.wallet.Protos;
-
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -82,6 +55,31 @@ import com.google.bitcoin.store.UnreadableWalletException;
 import com.google.bitcoin.store.WalletProtobufSerializer;
 import com.google.common.base.Charsets;
 
+import org.bitcoinj.wallet.Protos;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.Writer;
+import java.text.DateFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TimeZone;
+
+import javax.annotation.Nonnull;
+
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.WalletApplication;
@@ -96,10 +94,10 @@ import de.schildbach.wallet.util.Io;
 import de.schildbach.wallet.util.Iso8601Format;
 import de.schildbach.wallet.util.Nfc;
 import de.schildbach.wallet.util.WalletUtils;
-
-//import com.google.bitcoin.core.CoinDefinition;
 import de.schildbach.wallet.util.WholeStringBuilder;
 import hashengineering.smileycoin.wallet.R;
+
+//import com.google.bitcoin.core.CoinDefinition;
 
 
 /**
@@ -119,9 +117,11 @@ public final class WalletActivity extends AbstractWalletActivity
 
 	private static final int REQUEST_CODE_SCAN = 0;
 
+
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
 	{
+
 		super.onCreate(savedInstanceState);
 
 		application = getWalletApplication();
@@ -291,6 +291,10 @@ public final class WalletActivity extends AbstractWalletActivity
 
 			case R.id.wallet_options_preferences:
 				startActivity(new Intent(this, PreferencesActivity.class));
+				return true;
+
+			case R.id.wallet_options_tutorweb:
+				startActivity(new Intent(this, TutorWebActivity.class));
 				return true;
 
 			case R.id.wallet_options_about:

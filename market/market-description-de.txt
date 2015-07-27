@@ -1,39 +1,39 @@
 <<<<<<< HEAD
-Hab deine digitalcoins immer dabei, in deiner Hosentasche! Du zahlst, indem du rasch einen QR-Code scannst. Als Händler empfängst du Zahlungen zuverlässig und sofort. digitalcoin Wallet ist die erste mobile digitalcoin app, und wohl auch die sicherste!
+Hab deine smileycoins immer dabei, in deiner Hosentasche! Du zahlst, indem du rasch einen QR-Code scannst. Als Händler empfängst du Zahlungen zuverlässig und sofort. smileycoin Wallet ist die erste mobile smileycoin app, und wohl auch die sicherste!
 =======
-<b>Hab deine digitalcoins immer dabei, in deiner Hosentasche!</b> Du zahlst, indem du rasch einen QR-Code scannst. Als Händler empfängst du Zahlungen zuverlässig und sofort. digitalcoin Wallet ist die erste mobile digitalcoin app, und wohl auch die sicherste!
+<b>Hab deine smileycoins immer dabei, in deiner Hosentasche!</b> Du zahlst, indem du rasch einen QR-Code scannst. Als Händler empfängst du Zahlungen zuverlässig und sofort. smileycoin Wallet ist die erste mobile smileycoin app, und wohl auch die sicherste!
 >>>>>>> upstream/master
 
 
 <b>FEATURES</b>
 
 • Keine Registrierung, Web-Dienst oder Cloud nötig! Diese Wallet ist dezentral und Peer to Peer.
-• Anzeige von digitalcoin-Werten in DGC, mDGC und µDGC.
+• Anzeige von smileycoin-Werten in DGC, mDGC und µDGC.
 • Umrechnung von und zu den nationalen Währungen.
-• Senden und Empfangen von digitalcoin via NFC, QR-Codes oder digitalcoin URLs.
+• Senden und Empfangen von smileycoin via NFC, QR-Codes oder smileycoin URLs.
 • Adressbuch für regelmäßig genutzte Empfänger.
 • Wenn du offline bist, kannst du trotzdem über Bluetooth zahlen.
 • System-Benachrichtigung für den Empfang von Zahlungen.
 <<<<<<< HEAD
-• App-Widget zeigt digitalcoin-Guthaben an.
+• App-Widget zeigt smileycoin-Guthaben an.
 
-Weitere Informationen zu digitalcoin findest Du unter
-http://digitalcoin.co
+Weitere Informationen zu smileycoin findest Du unter
+http://tutor-web.info/smileycoin
 
-Wenn Du zu digitalcoin Wallet beitragen willst, das Projekt befindet sich auf
-https://github.com/HashEngineering/digitalcoin-wallet
+Wenn Du zu smileycoin Wallet beitragen willst, das Projekt befindet sich auf
+https://github.com/tutor-web/smileycoin-android
 =======
 • Entleeren von Paper-Wallets (die z.B. für Cold-Storage genutzt wurden).
-• App-Widget zeigt digitalcoin-Guthaben an.
+• App-Widget zeigt smileycoin-Guthaben an.
 
 
 <b>MITWIRKEN</b>
 
-digitalcoin Wallet ist <b>Open Source</b> und <b>Freie Software</b>. Lizenz: GPLv3
+smileycoin Wallet ist <b>Open Source</b> und <b>Freie Software</b>. Lizenz: GPLv3
 https://www.gnu.org/licenses/gpl-3.0.de.html
 
 Unser Source Code ist auf GitHub verfügbar:
-https://github.com/HashEngineering/digitalcoin-wallet
+https://github.com/tutor-web/smileycoin-android
 >>>>>>> upstream/master
 
 Alle Übersetzungen werden auf Transifex organisiert:
@@ -42,8 +42,8 @@ https://www.transifex.com/projects/p/bitcoin-wallet/
 
 <b>EMPFEHLUNGEN</b>
 
-• Viele mobile Wallets basieren auf digitalcoin Wallet. Beispiele: blockchain.info, Hive and KnC.
-• Von http://digitalcoin.co empfohlenes mobiles Wallet.
+• Viele mobile Wallets basieren auf smileycoin Wallet. Beispiele: blockchain.info, Hive and KnC.
+• Von http://tutor-web.info/smileycoin empfohlenes mobiles Wallet.
 • Von BitPay empfohlen.
 
 

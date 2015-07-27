@@ -1,21 +1,21 @@
-Miej swoje digitalcoiny zawsze w swojej kieszeni! Zapłacisz skanując kod QR. Jako sprzedawca odbierzesz płatności niezawodnie i natychmiastowo. digitalcoin Wallet jest pierwszą aplikacją digitalcoinową na telefony i niezaprzeczalnie najbezpieczniejszą.
+Miej swoje smileycoiny zawsze w swojej kieszeni! Zapłacisz skanując kod QR. Jako sprzedawca odbierzesz płatności niezawodnie i natychmiastowo. smileycoin Wallet jest pierwszą aplikacją smileycoinową na telefony i niezaprzeczalnie najbezpieczniejszą.
 
 WŁAŚCIWOŚCI:
 
 • Brak konieczności rejestracji, serwisu online lub chmury! Ten portfel używa zdecentralizowanej sieci peer-to-peer.
 • Wyświetl ilość kwotę w DGC i mDGC.
 • Zamiana z i na waluty narodowe
-• Wysyłąnie i odbieranie digitalcoin za pomocą NFC, kodów QR czy adresów digitalcoin URL.
-• Książka adresowa dla regularnie używanych adresów digitalcoin.
+• Wysyłąnie i odbieranie smileycoin za pomocą NFC, kodów QR czy adresów smileycoin URL.
+• Książka adresowa dla regularnie używanych adresów smileycoin.
 • Gdy jesteś offline, wciąż możesz zapłacić przy użyciu Bluetooth.
 • System powiadomień dla przychodzących transakcji.
 • Widget aplikacji dla stanu konta.
 
-Dowiedz się więcej o digitalcoin
-http://digitalcoin.co
+Dowiedz się więcej o smileycoin
+http://tutor-web.info/smileycoin
 
-Jeśli chcesz przyczynić się do rozwoju digitalcoin Wallet to projekt znajduje się pod adresem
-https://github.com/HashEngineering/digitalcoin-wallet
+Jeśli chcesz przyczynić się do rozwoju smileycoin Wallet to projekt znajduje się pod adresem
+https://github.com/tutor-web/smileycoin-android
 
 Licencja: GPLv3
 Używasz na własne ryzyko!

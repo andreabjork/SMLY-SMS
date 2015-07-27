@@ -72,6 +72,7 @@
 					<artifactId>android-maven-plugin</artifactId>
 					<version>3.8.2</version>
 					<configuration>
+						<sdk><platform>17</platform></sdk>
 						<genDirectory>${basedir}/gen</genDirectory>
 					</configuration>
 					<extensions>true</extensions>

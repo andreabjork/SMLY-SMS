@@ -83,4 +83,16 @@
 		<item name="android:minHeight">48dp</item>
 	</style>
 
+	<style name="TutorWebButtons">
+		<item name="android:layout_width">281dp</item>
+		<item name="android:layout_gravity">center_horizontal</item>
+		<item name="android:layout_margin">15px</item>
+		<item name="android:layout_weight">0.02</item>
+		<item name="android:background">@drawable/tutorweb_btns</item>
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:shadowColor">@android:color/black</item>
+		<item name="android:shadowRadius">1</item>
+	</style>
+
 </resources>

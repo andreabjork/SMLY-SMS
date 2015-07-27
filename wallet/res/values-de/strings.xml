@@ -275,8 +275,8 @@
 	<string name="button_paste">Einfügen</string>
 	<string name="button_share">Teilen</string>
 	<string name="button_set_as_default">Als Standard setzen</string>
-	<string name="button_request_coins">DGC anfordern</string>
-	<string name="button_send_coins">DGC senden</string>
+	<string name="button_request_coins">SMLY anfordern</string>
+	<string name="button_send_coins">SMLY senden</string>
 	<string name="button_scan">Scannen</string>
 	<string name="button_edit_address">Adresse hinzufügen/ändern</string>
 	<string name="button_settings">Einstellungen</string>

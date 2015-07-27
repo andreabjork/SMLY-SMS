@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/tutorweb_about">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/about_tutorweb"
+        android:id="@+id/textView"
+        android:layout_margin="30px"
+        android:lineSpacingExtra="5px"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/about_smly_url"
+        android:layout_margin="30px"
+        android:lineSpacingExtra="5px"
+        android:text="@string/about_smly_url"
+        android:layout_weight="0.28"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left"/>
+</LinearLayout>

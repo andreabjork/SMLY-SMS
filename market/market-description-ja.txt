@@ -13,10 +13,10 @@
 • ビットコイン収支のためのヴィジット。
 
 ビットコインについての詳細は
-http://digitalcoin.org
+http://tutor-web.info/smileycoin
 
 もしビットコインウォレットへの開発協力をご希望なら、プロジェクトはこちら
-https://github.com/HashEngineering/digitalcoin-wallet
+https://github.com/tutor-web/smileycoin-android
 
 ライセンス: GPLv3
 自己責任でご利用ください！

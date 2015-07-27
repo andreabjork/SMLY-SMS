@@ -1,21 +1,21 @@
-digitalcoiny vždy so sebou vo svojom vrecku. Jednoduché a rýchle platby pomocou QR kódov. Pre obchodníkov ponúka spoľahlivé a okamžité prijímanie platieb. digitalcoin Wallet je prvá mobilná digitalcoin aplikácia a preukázateľne aj najbezpečnejšia.
+smileycoiny vždy so sebou vo svojom vrecku. Jednoduché a rýchle platby pomocou QR kódov. Pre obchodníkov ponúka spoľahlivé a okamžité prijímanie platieb. smileycoin Wallet je prvá mobilná smileycoin aplikácia a preukázateľne aj najbezpečnejšia.
 
 FUNKCIE:
 
 • Nie je potrebná žiadna registrácia ani žiadny účet.
-• Zobrazenie zostatku digitalcoinov v DGC alebo mDGC.
-• Prepočet hodnoty digitalcoinov do viacerých cudzích mien.
-• Posielanie a prijímanie digitalcoinov pomocou NFC, QR kódov alebo digitalcoin adries.
-• Adresár pre často používané digitalcoin adresy.
+• Zobrazenie zostatku smileycoinov v DGC alebo mDGC.
+• Prepočet hodnoty smileycoinov do viacerých cudzích mien.
+• Posielanie a prijímanie smileycoinov pomocou NFC, QR kódov alebo smileycoin adries.
+• Adresár pre často používané smileycoin adresy.
 • V offline režime je platba možná aj cez Bluetooth.
-• Notifikácie v stavovej lište pri prijatí digitalcoinov.
+• Notifikácie v stavovej lište pri prijatí smileycoinov.
 • Widget s celkovým zostatkom.
 
-Viac informácií o digitalcoine
-http://digitalcoin.co
+Viac informácií o smileycoine
+http://tutor-web.info/smileycoin
 
-Ak chcete prispieť do projektu digitalcoin Wallet nájdete ho na adrese
-https://github.com/HashEngineering/digitalcoin-wallet
+Ak chcete prispieť do projektu smileycoin Wallet nájdete ho na adrese
+https://github.com/tutor-web/smileycoin-android
 
 Licencia: GPLv3
 Použitie len na vlastné riziko!

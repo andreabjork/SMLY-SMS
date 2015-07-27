@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/ic_logo_tutorweb"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40px"
+        android:layout_marginBottom="40px"/>
+
+
+    <Button
+        android:layout_width="281dp"
+        android:layout_height="wrap_content"
+        android:text="About Tutor Web"
+        android:id="@+id/tutorweb_about"
+        style="@style/TutorWebButtons"
+        android:onClick="openAbout"
+    />
+
+    <Button
+        android:layout_width="281dp"
+        android:layout_height="wrap_content"
+        android:text="Earning smileycoins"
+        android:id="@+id/tutorweb_earn"
+        style="@style/TutorWebButtons"
+        android:onClick="openEarnSMLY"
+        />
+
+    <Button
+        android:layout_width="281dp"
+        android:layout_height="wrap_content"
+        android:text="Redeem smileycoins"
+        android:id="@+id/tutorweb_redeem"
+        style="@style/TutorWebButtons"
+        android:onClick="openRedeemSMLY"
+        />
+
+    <Button
+        android:layout_width="281dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tutorweb_use"
+        style="@style/TutorWebButtons"
+        android:text="Spend smileycoins"
+        android:onClick="openSpendSMLY"/>
+
+</LinearLayout>

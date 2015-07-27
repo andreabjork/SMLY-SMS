@@ -6,7 +6,7 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>1.0</version>
+	<version>1.2</version>
 	<name>Smileycoin Wallet</name>
 
 
@@ -130,7 +130,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
 	</dependencies>
 
 	<profiles>
@@ -142,6 +141,7 @@
 						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 						<artifactId>android-maven-plugin</artifactId>
 						<configuration>
+							<sdk><platform>17</platform></sdk>
 							<release>true</release>
 							<proguard>
 								<skip>false</skip>

@@ -44,9 +44,9 @@
 			android:key="about_author_googleplus"
 			android:summary="+Andreas Schildbach"
 			android:title="@string/about_author_googleplus_title" /-->
-		<Preference
+		<!--<Preference
 			android:key="about_market_publisher"
-			android:title="@string/about_credits_market_publisher_title" />
+			android:title="@string/about_credits_market_publisher_title" />-->
 		<Preference android:key="about_credits_bitcoinj" />
 		<Preference
 			android:key="about_credits_zxing"

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="RequiredSize"
+    android:id="@+id/tutorweb_redeem_layout">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginTop="8dp"
+        android:text="@string/redeem_coins_title"
+        android:textColor="#000"
+        android:textSize="@dimen/font_size_small"
+        android:textStyle="bold"
+        android:id="@+id/redeem_coins_header_title" />
+
+    <TextView
+        android:id="@+id/send_coins_payee_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginTop="8dp"
+        android:singleLine="true"
+        android:textColor="@color/fg_significant"
+        android:textSize="@dimen/font_size_normal" />
+
+    <TextView
+        android:id="@+id/send_coins_payee_organization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal_lax"
+        android:singleLine="true"
+        android:textColor="@color/fg_significant"
+        android:textSize="@dimen/font_size_normal"
+        android:text="@string/redeem_coins_receiving_address_label" />
+
+    <TextView
+        android:id="@+id/send_coins_payee_verified_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal_lax"
+        android:singleLine="true"
+        android:textColor="@color/fg_less_significant"
+        android:textSize="@dimen/font_size_small" />
+
+    <AutoCompleteTextView
+        android:id="@+id/send_coins_receiving_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal"
+        android:completionThreshold="1"
+        android:imeOptions="flagNoExtractUi"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="@dimen/font_size_normal"
+        android:editable="false"
+        android:focusable="false"
+        android:clickable="false"/>
+
+    <LinearLayout
+        android:id="@+id/send_coins_receiving_static"
+        style="@style/My.Widget.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/send_coins_receiving_static_label"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:singleLine="false"
+            android:textSize="@dimen/font_size_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/send_coins_receiving_static_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/list_entry_padding_horizontal"
+            android:textSize="@dimen/font_size_normal" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginTop="8dp"
+        android:text="@string/redeem_coins_amount_label"
+        android:textSize="@dimen/font_size_small"
+        android:textStyle="bold"
+        android:id="@+id/redeem_coins_amoun_earned" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal"
+        android:divider="@drawable/divider_currency"
+        android:orientation="horizontal"
+        android:showDividers="middle" >
+
+        <de.schildbach.wallet.ui.CurrencyAmountView
+            android:id="@+id/redeem_coins_amount_btc"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <EditText
+                android:id="@+id/redeem_coins_amount_btc_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="flagNoExtractUi"
+                android:textSize="@dimen/font_size_large"
+                tools:ignore="TextFields"
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"/>
+        </de.schildbach.wallet.ui.CurrencyAmountView>
+
+        <de.schildbach.wallet.ui.CurrencyAmountView
+            android:id="@+id/redeem_coins_amount_local"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <EditText
+                android:id="@+id/redeem_coins_amount_local_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="flagNoExtractUi"
+                android:textSize="@dimen/font_size_large"
+                tools:ignore="TextFields"
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"/>
+        </de.schildbach.wallet.ui.CurrencyAmountView>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginTop="8dp"
+        android:text="@string/redeem_coins_fragment_fee"
+        android:textSize="@dimen/font_size_small"
+        android:textStyle="bold"
+        android:id="@+id/redeem_coins_clear" />
+
+    <!-- stretch dummy --><![CDATA[
+
+    />
+
+
+
+    ]]>
+
+    <TextView
+        android:id="@+id/redeem_coins_message"
+        android:layout_width="match_parent"
+        android:layout_height="127dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_margin="30px"
+        android:lineSpacingExtra="5px"
+        android:layout_gravity="center_horizontal"
+        android:text=" "
+        android:gravity="center"
+        android:layout_weight="0.89" />
+
+    <ImageView
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal"
+        android:divider="@drawable/divider_currency"
+        android:orientation="horizontal"
+        android:showDividers="middle" >
+
+    <Button
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:text="Redeem"
+            android:id="@+id/redeemBtn"
+            android:onClick="TutorWebRedeem"
+            style="@style/TutorWebButtons"
+            />
+
+        <Button
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:id="@+id/button4"
+            android:onClick="TutorWebLogout"
+            style="@style/TutorWebButtons"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginTop="8dp"
+        android:text="@string/redeem_coins_fragment_fee"
+        android:textSize="@dimen/font_size_small"
+        android:textStyle="bold"
+        android:id="@+id/textView7"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/send_coins_direct_payment_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/list_entry_padding_vertical"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal_lax"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal_lax"
+        android:textSize="@dimen/font_size_normal"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/send_coins_sent_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</LinearLayout>
