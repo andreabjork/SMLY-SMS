@@ -81,7 +81,7 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         String cookie = this.getCookie(con);
         if(!cookie.contains("deleted")) {
             store.clearUserData();
-            store.storeUserData(usr, pw, cookie, spinnerVal);
+            store.storeUserData(usr, cookie, spinnerVal);
         }
 
         responseCode = con.getResponseCode();

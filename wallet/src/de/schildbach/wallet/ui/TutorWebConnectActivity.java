@@ -26,6 +26,7 @@ public class TutorWebConnectActivity extends AbstractWalletActivity
 {
     private EditText userText = null;
     private EditText pwText = null;
+    private TextView message = null;
     private Spinner spinner = null;
     private UserLocalStore store;
 
@@ -43,21 +44,22 @@ public class TutorWebConnectActivity extends AbstractWalletActivity
         findViewById(R.id.connectBtn).setEnabled(true);
         userText = ((EditText)findViewById(R.id.usernameEdit));
         pwText = ((EditText)findViewById(R.id.passwordEdit));
+        message = (TextView)(findViewById(R.id.connect_error_message));
+
         spinner = ((Spinner)findViewById(R.id.url_spinner));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                store.setBox(i==1);
+                store.setBox(i == 1);
                 if(store.isKnownUser()) {
                     String[] userData = store.getUserData();
-                    for(String data : userData) {
-                        System.out.println(data);
-                    }
                     userText.setText(userData[0]);
-                    pwText.setText(userData[1]);
+                    pwText.setText("");
+                    message.setText(" ");
                 }else{
                     userText.setText("");
                     pwText.setText("");
+                    message.setText(" ");
                 }
             }
 
@@ -90,7 +92,7 @@ public class TutorWebConnectActivity extends AbstractWalletActivity
                 super.onPostExecute(aVoid);
                 if(this.getResponseCode()==200) TutorWebConnectActivity.this.handleSuccessfulLogin();
                 else {
-                    ((TextView)(findViewById(R.id.connect_error_message))).setText("Something went wrong. Please try again later.");
+                    message.setText("Something went wrong. Please try again later.");
                     (findViewById(R.id.connectBtn)).setEnabled(true);
                 }
             }
@@ -100,11 +102,11 @@ public class TutorWebConnectActivity extends AbstractWalletActivity
         String pw = pwText.getText().toString();
 
         if(!usrName.equals("") && !pw.equals("")) {
-            ((TextView)(findViewById(R.id.connect_error_message))).setText("Connecting...");
+            message.setText("Connecting...");
             (findViewById(R.id.connectBtn)).setEnabled(false);
             task.execute("login", usrName, pw, Integer.toString(spinnerPos));
         }
-        else ((TextView)(findViewById(R.id.connect_error_message))).setText("Please fill out both fields above.");
+        else message.setText("Please fill out both fields above.");
     }
 
     public void handleSuccessfulLogin() {
@@ -112,7 +114,7 @@ public class TutorWebConnectActivity extends AbstractWalletActivity
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         if(store.userInSession()) startActivity(intent);
         else {
-            ((TextView)(findViewById(R.id.connect_error_message))).setText("The username and password you entered don't match.");
+            message.setText("The username and password you entered don't match.");
             (findViewById(R.id.connectBtn)).setEnabled(true);
             
         }

@@ -22,18 +22,16 @@ public class UserLocalStore {
     // "1_constants": user's name, password and spinner position for Education in a Suitcase (box.tutor_web)
     // "1_sessionVars": user's cookie, user's balance for Education in a Suitcase (box.tutor_web)
 
-    public void storeUserData(String usrName, String pw, String cookie, String selectedPos) {
+    public void storeUserData(String usrName, String cookie, String selectedPos) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
 
         if (selectedPos.equals("1")) { // Box tutor-web login-info
             spEditor.putString("1_user",usrName);
-            spEditor.putString("1_password", pw);
             spEditor.putInt("1_balance", 0);
             spEditor.putString("1_cookie", cookie);
 
         } else { // Default tutor-web login info
             spEditor.putString("0_user", usrName);
-            spEditor.putString("0_password", pw);
             spEditor.putInt("0_balance", 0);
             spEditor.putString("0_cookie", cookie);
         }
@@ -70,11 +68,9 @@ public class UserLocalStore {
         String[] userData = new String[2];
         if(this.usingBox()) {
             userData[0] = userLocalDatabase.getString("1_user", "");
-            userData[1] = userLocalDatabase.getString("1_password", "");
         }
         else {
             userData[0] = userLocalDatabase.getString("0_user", "");
-            userData[1] = userLocalDatabase.getString("0_password", "");
         }
 
         return userData;
@@ -95,13 +91,11 @@ public class UserLocalStore {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         if (this.usingBox()) { // Box tutor-web login-info
             spEditor.putString("1_user",null);
-            spEditor.putString("1_password", null);
             spEditor.putInt("1_balance", 0);
             spEditor.putString("1_cookie", null);
 
         } else { // Default tutor-web login info
             spEditor.putString("0_user", null);
-            spEditor.putString("0_password", null);
             spEditor.putInt("0_balance", 0);
             spEditor.putString("0_cookie", null);
         }
@@ -129,7 +123,7 @@ public class UserLocalStore {
     }
 
     public boolean isKnownUser() {
-        if(this.usingBox()) return (userLocalDatabase.getString("1_user", null) != null && userLocalDatabase.getString("1_password", null) != null);
-        else return (userLocalDatabase.getString("0_user", null) != null && userLocalDatabase.getString("0_password", null) != null);
+        if(this.usingBox()) return (userLocalDatabase.getString("1_user", null) != null);
+        else return (userLocalDatabase.getString("0_user", null) != null);
     }
 }
