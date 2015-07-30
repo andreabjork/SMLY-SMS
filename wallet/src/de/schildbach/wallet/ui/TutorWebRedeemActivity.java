@@ -2,7 +2,6 @@ package de.schildbach.wallet.ui;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.nfc.NfcManager;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -36,6 +35,7 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
     private Configuration config;
     private Address address = null;
     private UserLocalStore store;
+    private TextView message;
 
     private LoaderManager loaderManager;
     private static final int ID_RATE_LOADER = 0;
@@ -74,13 +74,12 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
 
         // Initialize store so we can access user's data.
         store = new UserLocalStore(getApplicationContext());
-        update(false);
+        message = (TextView)(findViewById(R.id.redeem_coins_message));
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        update(false);
     }
 
     @Override
@@ -94,8 +93,40 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // For updating coin balance, displaying error/success messages and enabling/disabling the redeem button.
-    private void update(boolean redeeming) {
+    public void TutorWebRedeem(View view) throws Exception {
+        TutorWebConnectionTask task = new TutorWebConnectionTask((AbstractWalletActivity) this) {
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                if(thrownException != null) handleRedeemException(thrownException);
+                else handleRedeemSuccess();
+            }
+        };
+        task.execute("redeem", store.getUserCookie(), address.toString());
+    }
+
+    public void handleRedeemSuccess() {
+        TutorWebConnectionTask task = new TutorWebConnectionTask((AbstractWalletActivity) this) {
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                if(thrownException != null) handleBalanceException(thrownException);
+                else handleBalanceSuccess();
+            }
+        };
+        task.execute("balance", store.getUserCookie());
+    }
+
+    public void handleRedeemException(Exception e) {
+        if(e instanceof TutorWebConnectionTask.UnauthorizedException) {
+            message.setText("Unauthorized. Please try logging in again.");
+        }
+        else if(e instanceof TutorWebConnectionTask.InternalErrorException) {
+            message.setText("The server is out of coins. Please try again later.");
+        } else if(e instanceof Exception) {
+            message.setText("An unknown error has ocurred. We could not redeem your coins.");
+        }
+    }
+
+    public void handleBalanceSuccess() {
         int coins = store.getUserBalance();
         Long coins_long = new Long(coins);
         Long coins_mult = new Long(100000000);
@@ -103,45 +134,18 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
         BigInteger bigCoins = BigInteger.valueOf(coins_big);
         amountCalculatorLink.setBtcAmount(bigCoins);
 
-        // redeeming = true if the user tried redeeming coins AND if the GET request for coin balance was successful.
-        if (coins <= 0 && redeeming) { // When redeeming and user successfully transferred coins (balance is down to 0)
-            ((TextView) findViewById(R.id.redeem_coins_message)).setText("You have successfully redeemed your SMLY coins. They will appear in your wallet in a short while.");
+        if(coins==0) {
+            message.setText("You have successfully redeemed your SMLY coins. They will appear in your wallet in a short while.");
             findViewById(R.id.redeemBtn).setEnabled(false);
-        } else if (coins > 0 && redeeming) { // When redeeming but coin balance was not reduced to 0, i.e. redeeming unsuccessful.
-            ((TextView) findViewById(R.id.redeem_coins_message)).setText("There was a problem with your redeem request. Please try a different address.");
-        } else if (coins <= 0) { // When coin balance is 0 and there are no coins to redeem
-            ((TextView) findViewById(R.id.redeem_coins_message)).setText("You have no coins to redeem.");
-            findViewById(R.id.redeemBtn).setEnabled(false);
-        } else if(!redeeming && coins >= 0) { // When not redeeming and user has coins to redeem
-            ((TextView) findViewById(R.id.redeem_coins_message)).setText("Press the 'Redeem' button to transfer the coins to your current address.");
-        } else { // When none of the above applies, it is assumed that the cookie is perhaps outdated, i.e. getSuccessful might be false.
-            ((TextView) findViewById(R.id.redeem_coins_message)).setText("There was a problem connecting to the server. Please try logging out and login again.");
-            findViewById(R.id.redeemBtn).setEnabled(true);
         }
     }
 
-    public void TutorWebRedeem(View view) throws Exception {
-        TutorWebConnectionTask task = new TutorWebConnectionTask((AbstractWalletActivity) this) {
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                TutorWebRedeemActivity.this.handleRedeem();
-            }
-
-        };
-        task.execute("redeem", store.getUserCookie(), address.toString());
-    }
-
-    public void handleRedeem() {
-        if (store.userInSession()) {
-            TutorWebConnectionTask task = new TutorWebConnectionTask((AbstractWalletActivity) this) {
-                protected void onPostExecute(Void aVoid) {
-                    super.onPostExecute(aVoid);
-                    TutorWebRedeemActivity.this.update(this.getResponseCode()==200);
-                }
-            };
-            task.execute("balance", store.getUserCookie());
-        } else {
-            System.out.println("No user");
+    public void handleBalanceException(Exception e) {
+        if(e instanceof TutorWebConnectionTask.UnauthorizedException) {
+            message.setText("Unauthorized. Please try logging in again.");
+        }
+        else if(e instanceof Exception) {
+            message.setText("Something went wrong. Please try again later.");
         }
     }
 
@@ -152,10 +156,18 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
         startActivity(intent);
     }
 
+    public void handleSuccess() {
+        Intent intent = new Intent(this, TutorWebRedeemActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+    }
+
+    public void handleException(Exception e) {
+        if(e instanceof TutorWebConnectionTask.UnauthorizedException);
+        else if(e instanceof TutorWebConnectionTask.InternalErrorException) ;
+    }
+
     // LoaderCallbacks functions:
-    private NfcManager nfcManager;
-
-
     private final LoaderCallbacks<Cursor> rateLoaderCallbacks = new LoaderManager.LoaderCallbacks<Cursor>() {
         @Override
         public Loader<Cursor> onCreateLoader(final int id, final Bundle args) {
@@ -188,5 +200,4 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
         loaderManager.destroyLoader(ID_RATE_LOADER);
         super.onPause();
     }
-
 }

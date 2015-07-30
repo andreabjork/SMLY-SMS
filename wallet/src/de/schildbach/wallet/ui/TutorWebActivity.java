@@ -3,6 +3,7 @@ package de.schildbach.wallet.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
@@ -68,24 +69,34 @@ public class TutorWebActivity extends AbstractWalletActivity
 
     // This functions handles forwarding to the next page if cookie is still valid.
     private void forwardToRedeemActivity() {
-        TutorWebConnectionTask task = new TutorWebConnectionTask((AbstractWalletActivity)this) {
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                if (this.getResponseCode()==200) {
-                    TutorWebActivity.this.handleSuccessfulForward();
-                } else {
-                    TutorWebActivity.this.redirectToLogin();
+        if(!store.userInSession()) {
+            redirectToLogin();
+        } else {
+            TutorWebConnectionTask task = new TutorWebConnectionTask(this) {
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    if (thrownException != null) handleException(thrownException);
+                    else handleSuccess();
                 }
-            }
-        };
-        task.execute("balance", store.getUserCookie());
+            };
+            task.execute("balance", store.getUserCookie());
+        }
     }
 
-    public void handleSuccessfulForward() {
+    public void handleSuccess() {
         Intent intent = new Intent(this, TutorWebRedeemActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
+    }
+
+    public void handleException(Exception e) {
+        if(e instanceof TutorWebConnectionTask.UnauthorizedException) {
+            redirectToLogin();
+            ((TextView)(findViewById(R.id.connect_error_message))).setText("User login has expired. Please log in again.");
+        }
+        else if(e instanceof Exception) {
+            ((TextView)(findViewById(R.id.connect_error_message))).setText("An uknown error has ocurred. Please try again later.");
+        }
     }
 
     public void redirectToLogin() {
@@ -93,6 +104,5 @@ public class TutorWebActivity extends AbstractWalletActivity
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
-    
 }
 

@@ -25,13 +25,14 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
     private final String redeem_url = "http://tutor-web.net/@@quizdb-student-award";
     private final String box_redeem_url = "http://box.tutor-web.net/@@quizdb-student-award";
     private boolean box = false;
-    private int responseCode = 0;
+
     // For storing and retrieving user's data:
     private AbstractWalletActivity activity;
     private WalletApplication application;
     private Configuration config;
     private Address address;
     private UserLocalStore store;
+    protected Exception thrownException;
 
     public TutorWebConnectionTask(AbstractWalletActivity myActivity) {
         // Get default wallet address:
@@ -39,6 +40,7 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         application = (WalletApplication) activity.getApplication();
         config = application.getConfiguration();
         address = application.determineSelectedAddress();
+        thrownException = null;
         // Initialize userLocalStore:
         store = new UserLocalStore(activity.getApplicationContext());
     }
@@ -49,11 +51,18 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
             if (strings[0].equals("login")) { // strings = {username, password, spinnerValue}
                 if(strings[3].equals("1")) box=true;
                 this.reqPOST_login((box ? box_login_url : login_url), strings[1], strings[2], strings[3]);
-                this.reqGET_balance((box ? box_redeem_url : redeem_url));
+                if(store.userInSession()) this.reqGET_balance((box ? box_redeem_url : redeem_url));
             }
-            else if(strings[0].equals("redeem")) this.reqPOST_redeem((store.usingBox() ? box_redeem_url : redeem_url));
-            else if(strings[0].equals("balance")) this.reqGET_balance((store.usingBox() ? box_redeem_url : redeem_url));
-        } catch(Exception e) {e.printStackTrace();}
+            else if(strings[0].equals("redeem") && store.userInSession()) this.reqPOST_redeem((store.usingBox() ? box_redeem_url : redeem_url));
+            else if(strings[0].equals("balance") && store.userInSession()) this.reqGET_balance((store.usingBox() ? box_redeem_url : redeem_url));
+        } catch(UnauthorizedException e) {
+            thrownException = e;
+        } catch(InternalErrorException e) {
+            thrownException = e;
+        } catch(Exception e) {
+            thrownException = e;
+        }
+
         return null;
     }
 
@@ -64,9 +73,6 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
 
         // Add request header
         con.setRequestMethod("POST");
-        con.setRequestProperty("User-Agent", "Mozilla/5.0");
-        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-
         // Adjust request depending on login/redeeming coins.
         String requestValues="form.submitted=1&pwd_empty="+(pw.length()>0 ? 1 : 0)+"&__ac_name="+usr+"&__ac_password="+pw;
 
@@ -78,13 +84,21 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         wr.close();
 
         store.clearSessionData(); // Clears cookies and coin balance before logging in
+
         String cookie = this.getCookie(con);
         if(!cookie.contains("deleted")) {
             store.clearUserData();
             store.storeUserData(usr, cookie, spinnerVal);
         }
 
-        responseCode = con.getResponseCode();
+        switch(con.getResponseCode()) {
+            case 200: break;
+            case 401: throw new UnauthorizedException();
+            case 403: throw new UnauthorizedException();
+            case 500: throw new InternalErrorException();
+            default: throw new Exception("An unknown exception has ocurred.");
+        }
+
         return con.getResponseCode();
     }
 
@@ -97,8 +111,6 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         String requestValues = "{\"walletId\":\""+address.toString()+"\"}";
         // Add request header
         con.setRequestMethod("POST");
-        con.setRequestProperty("User-Agent", "Mozilla/5.0");
-        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         con.setRequestProperty("Cookie", store.getUserCookie());
 
@@ -109,7 +121,14 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         wr.flush();
         wr.close();
 
-        responseCode = con.getResponseCode();
+        switch(con.getResponseCode()) {
+            case 200: break;
+            case 401: throw new UnauthorizedException();
+            case 403: throw new UnauthorizedException();
+            case 500: throw new InternalErrorException();
+            default: throw new Exception("An unknown exception has ocurred.");
+        }
+
         return con.getResponseCode();
     }
 
@@ -121,27 +140,46 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         con.setRequestMethod("GET");
 
         //add request header
-        con.setRequestProperty("User-Agent", "Mozilla/5.0");
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         con.setRequestProperty("Cookie", store.getUserCookie());
+
+        switch(con.getResponseCode()) {
+            case 200: break;
+            case 401: throw new UnauthorizedException();
+            case 403: throw new UnauthorizedException();
+            case 500: throw new InternalErrorException();
+            default: throw new Exception("An unknown exception has ocurred.");
+        }
 
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine = in.readLine();
         in.close();
 
-        responseCode = con.getResponseCode();
-        if(responseCode == 200 ) {
-            int coinBalance = ((Integer.parseInt(((((inputLine.split(Pattern.quote(",")))[2]).split(Pattern.quote(":")))[1]).replaceAll("\\s", ""))) / 1000);
-            store.setUserBalance(coinBalance);
-        }
-        return responseCode;
-    }
+        int coinBalance = ((Integer.parseInt(((((inputLine.split(Pattern.quote(",")))[2]).split(Pattern.quote(":")))[1]).replaceAll("\\s", ""))) / 1000);
+        store.setUserBalance(coinBalance);
 
+
+        return con.getResponseCode();
+    }
 
     // Returns the Set-Cookie header from post request with HttpURLConnection
     private String getCookie(HttpURLConnection urlCon) {
         return (urlCon.getHeaderField("Set-Cookie").split(Pattern.quote(";")))[0];
     }
 
-    public int getResponseCode() {return responseCode;}
+    // 401, 403
+    public class UnauthorizedException extends Exception {
+        public UnauthorizedException() {super();}
+        public UnauthorizedException(String message) {super(message);}
+        public UnauthorizedException(String message, Throwable cause) {super(message, cause);}
+        public UnauthorizedException(Throwable cause) {super(cause);}
+    }
+
+    // 500
+    public class InternalErrorException extends Exception {
+        public InternalErrorException() {super();}
+        public InternalErrorException(String message) {super(message);}
+        public InternalErrorException(String message, Throwable cause) {super(message, cause);}
+        public InternalErrorException(Throwable cause) {super(cause);}
+    }
 }

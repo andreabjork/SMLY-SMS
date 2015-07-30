@@ -21,8 +21,6 @@ import hashengineering.smileycoin.wallet.R;
  * Created by andrea on 7.7.2015.
  */
 public class TutorWebConnectActivity extends AbstractWalletActivity
-
-
 {
     private EditText userText = null;
     private EditText pwText = null;
@@ -82,19 +80,14 @@ public class TutorWebConnectActivity extends AbstractWalletActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-    // Use: Logs in with the given username and password.
-    // If login was successful, retrieves the number of SMLY the user has earned.
     public void TutorWebLogin(View view) throws Exception {
         TutorWebConnectionTask task = new TutorWebConnectionTask((AbstractWalletActivity)this) {
             @Override
             protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                if(this.getResponseCode()==200) TutorWebConnectActivity.this.handleSuccessfulLogin();
-                else {
-                    message.setText("Something went wrong. Please try again later.");
-                    (findViewById(R.id.connectBtn)).setEnabled(true);
+                if(thrownException != null) {
+                    handleException(thrownException);
                 }
+                else handleSuccess();
             }
         };
         int spinnerPos = ((Spinner)findViewById(R.id.url_spinner)).getSelectedItemPosition();
@@ -109,14 +102,26 @@ public class TutorWebConnectActivity extends AbstractWalletActivity
         else message.setText("Please fill out both fields above.");
     }
 
-    public void handleSuccessfulLogin() {
-        Intent intent = new Intent(this, TutorWebRedeemActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        if(store.userInSession()) startActivity(intent);
-        else {
+    public void handleSuccess() {
+        // Login might have failed even if POST request was successfully sent:
+        if(store.userInSession()) {
+            Intent intent = new Intent(this, TutorWebRedeemActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
+        } else {
             message.setText("The username and password you entered don't match.");
             (findViewById(R.id.connectBtn)).setEnabled(true);
-            
+        }
+    }
+
+    public void handleException(Exception e) {
+        if(e instanceof TutorWebConnectionTask.UnauthorizedException) {
+            message.setText("The username and password you entered don't match.");
+            (findViewById(R.id.connectBtn)).setEnabled(true);
+
+        }
+        else if(e instanceof Exception) {
+            message.setText("Something went wrong. Please try again later");
         }
     }
 }
