@@ -17,19 +17,6 @@
 
 package de.schildbach.wallet.ui.send;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.math.BigInteger;
-
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.bitcoin.protocols.payments.Protos.Payment;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
@@ -75,9 +62,9 @@ import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-
 import com.google.bitcoin.core.Address;
 import com.google.bitcoin.core.AddressFormatException;
+import com.google.bitcoin.core.CoinDefinition;
 import com.google.bitcoin.core.ECKey;
 import com.google.bitcoin.core.NetworkParameters;
 import com.google.bitcoin.core.Sha256Hash;
@@ -89,7 +76,17 @@ import com.google.bitcoin.core.Wallet;
 import com.google.bitcoin.core.Wallet.BalanceType;
 import com.google.bitcoin.core.Wallet.SendRequest;
 
-import com.google.bitcoin.core.CoinDefinition;
+import org.bitcoin.protocols.payments.Protos.Payment;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.math.BigInteger;
+
+import javax.annotation.CheckForNull;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Configuration;
@@ -886,13 +883,16 @@ public final class SendCoinsFragment extends SherlockFragment
 				if (callingActivity != null)
 				{
 					log.info("returning result to calling activity: {}", callingActivity.flattenToString());
-
 					final Intent result = new Intent();
 					BitcoinIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
 					if (paymentIntent.standard == Standard.BIP70)
 						BitcoinIntegration.paymentToResult(result, payment.toByteArray());
 					activity.setResult(Activity.RESULT_OK, result);
+
+					if(activity.getIntent().getBooleanExtra("purchase", false)) activity.finish();
 				}
+
+
 			}
 
 			private void directPay(final Payment payment)
@@ -902,12 +902,12 @@ public final class SendCoinsFragment extends SherlockFragment
 					final DirectPaymentTask.ResultCallback callback = new DirectPaymentTask.ResultCallback()
 					{
 						@Override
-						public void onResult(final boolean ack)
-						{
+						public void onResult(final boolean ack) {
 							directPaymentAck = ack;
 
-							if (state == State.SENDING)
+							if (state == State.SENDING) {
 								state = State.SENT;
+							}
 
 							updateView();
 						}
@@ -942,6 +942,8 @@ public final class SendCoinsFragment extends SherlockFragment
 								Bluetooth.getBluetoothMac(paymentIntent.paymentUrl)).send(payment);
 					}
 				}
+
+
 			}
 
 			@Override

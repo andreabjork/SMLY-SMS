@@ -17,8 +17,6 @@
 
 package de.schildbach.wallet.ui.send;
 
-import javax.annotation.Nonnull;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +24,9 @@ import android.os.Bundle;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+
+import javax.annotation.Nonnull;
+
 import de.schildbach.wallet.data.PaymentIntent;
 import de.schildbach.wallet.ui.AbstractBindServiceActivity;
 import de.schildbach.wallet.ui.HelpDialogFragment;
@@ -56,6 +57,7 @@ public final class SendCoinsActivity extends AbstractBindServiceActivity
 
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
+
 	}
 
 	@Override

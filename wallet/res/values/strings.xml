@@ -285,4 +285,6 @@ material and a built-in drilling system.
 	</string>
 	<string name="spend_url">More information at <a href="https://c-cex.com/?p=smly-btc">c-cex.com</a></string>
 	<string name="about_smly_url"><a href="http://tutor-web.info/information">Click here</a> if you wish to learn more about the Tutor Web Project and <a href="http://tutor-web.info/smileycoin">here</a> to learn more about smileycoin.</string>
+	<string name="prepare_payment_title">Smileycoin Games Payment</string>
+
 </resources>

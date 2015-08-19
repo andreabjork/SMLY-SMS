@@ -201,6 +201,15 @@
 			android:label="@string/about_title"
 			android:screenOrientation="behind" />
 		<activity
+			android:name="de.schildbach.wallet.ui.send.PreparePayment"
+			android:label="@string/prepare_payment_title"
+			android:screenOrientation="behind">
+			<intent-filter>
+				<action android:name="de.schildbach.wallet.PREPARE_PAYMENT" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		<activity
 			android:name="de.schildbach.wallet.ui.ImportKeysActivity"
 			android:configChanges="orientation|keyboard|keyboardHidden"
 			android:theme="@style/My.Theme.Dialog" >
