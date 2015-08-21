@@ -18,6 +18,7 @@
 package de.schildbach.wallet.ui.send;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -773,7 +774,7 @@ public final class SendCoinsFragment extends SherlockFragment
 		{
 			// could not decode address at all
 			if (popups)
-				popupMessage(receivingAddressView, getString(R.string.send_coins_fragment_receiving_address_error));
+				 popupMessage(receivingAddressView, getString(R.string.send_coins_fragment_receiving_address_error));
 		}
 
 		updateView();
@@ -818,14 +819,30 @@ public final class SendCoinsFragment extends SherlockFragment
 	{
 		dismissPopup();
 
-		popupMessageView.setText(message);
-		popupMessageView.setMaxWidth(getView().getWidth());
+		// Find out why this is crashing!
+		try {
+			popupMessageView.setText(message);
+			popupMessageView.setMaxWidth(getView().getWidth());
+			popup(anchor, popupMessageView);
+		} catch(NullPointerException e) {
+			AlertDialog.Builder addressDialogBuilder = new AlertDialog.Builder(this.getActivity());
+			addressDialogBuilder
+					.setTitle("Invalid address")
+					.setMessage("Please enter a valid address or a known address name in the address field.")
+					.setCancelable(true)
+					.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+							receivingAddressView.requestFocus();
+						}
+					});
 
-		popup(anchor, popupMessageView);
+			AlertDialog addressDialog = addressDialogBuilder.create();
+			addressDialog.show();
+		}
 	}
 
-	private void popup(@Nonnull final View anchor, @Nonnull final View contentView)
-	{
+	private void popup(@Nonnull final View anchor, @Nonnull final View contentView) {
 		contentView.measure(MeasureSpec.makeMeasureSpec(MeasureSpec.UNSPECIFIED, 0), MeasureSpec.makeMeasureSpec(MeasureSpec.UNSPECIFIED, 0));
 
 		popupWindow = new PopupWindow(contentView, contentView.getMeasuredWidth(), contentView.getMeasuredHeight(), false);
@@ -970,17 +987,15 @@ public final class SendCoinsFragment extends SherlockFragment
 					msg.append(
 							getString(R.string.send_coins_fragment_pending,
 									btcPrefix + ' ' + GenericUtils.formatValue(pending, btcPrecision, btcShift))).append("\n\n");
-				msg.append(getString(R.string.send_coins_fragment_insufficient_money_msg2));
+				//msg.append(getString(R.string.send_coins_fragment_insufficient_money_msg2));
 				dialog.setMessage(msg);
-				dialog.setPositiveButton(R.string.send_coins_options_empty, new DialogInterface.OnClickListener()
-				{
+				dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 					@Override
-					public void onClick(final DialogInterface dialog, final int which)
-					{
-						handleEmpty();
+					public void onClick(final DialogInterface dialog, final int which) {
+						dialog.cancel();//handleEmpty();
 					}
 				});
-				dialog.setNegativeButton(R.string.button_cancel, null);
+				//dialog.setNegativeButton(R.string.button_cancel, null);
 				dialog.show();
 			}
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/tutorweb_earn">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="149dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/earn_smileycoin_text"
+        android:id="@+id/textView2"
+        android:layout_margin="30px"
+        android:lineSpacingExtra="5px"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:entries="@array/tutorweb_sites"
+        android:id="@+id/link_spinner"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView3"
+        android:gravity="center_horizontal"
+        android:layout_weight="0.18" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="Open Tutor Web"
+        android:id="@+id/tutorweb_main"
+        android:onClick="openTutorWeb"
+        style="@style/TutorWebButtons" />
+
+</LinearLayout>

@@ -1,7 +1,11 @@
 package de.schildbach.wallet.ui;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.view.View;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -36,6 +40,14 @@ public class TutorWebSpendActivity extends AbstractWalletActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void openPlaystore(View view) {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=org.jfedor.smileybubble")));
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=org.jfedor.smileybubble")));
+        }
     }
 
 }
