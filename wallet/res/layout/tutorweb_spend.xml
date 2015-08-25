@@ -35,7 +35,6 @@
         android:text="@string/spend_url"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_gravity="bottom"
-        android:onClick="openPlaystore"
         android:gravity="bottom"
         android:id="@+id/spending_smly_url" />
 </LinearLayout>
