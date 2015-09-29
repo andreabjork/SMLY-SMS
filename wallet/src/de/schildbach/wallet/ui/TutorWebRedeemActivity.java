@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
@@ -75,6 +76,8 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
         // Initialize store so we can access user's data.
         store = new UserLocalStore(getApplicationContext());
         message = (TextView)(findViewById(R.id.redeem_coins_message));
+        update();
+
     }
 
     @Override
@@ -109,7 +112,9 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
             @Override
             protected void onPostExecute(Void aVoid) {
                 if(thrownException != null) handleBalanceException(thrownException);
-                else handleBalanceSuccess();
+                else {
+                    handleBalanceSuccess();
+                }
             }
         };
         task.execute("balance", store.getUserCookie());
@@ -138,6 +143,11 @@ public class TutorWebRedeemActivity extends AbstractWalletActivity {
             message.setText("You have successfully redeemed your SMLY coins. They will appear in your wallet in a short while.");
             findViewById(R.id.redeemBtn).setEnabled(false);
         }
+    }
+
+    public void update() {
+        handleBalanceSuccess();
+        message.setText("");
     }
 
     public void handleBalanceException(Exception e) {

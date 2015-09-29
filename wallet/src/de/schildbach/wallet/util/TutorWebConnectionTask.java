@@ -1,6 +1,7 @@
 package de.schildbach.wallet.util;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.bitcoin.core.Address;
 
@@ -142,7 +143,6 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         //add request header
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         con.setRequestProperty("Cookie", store.getUserCookie());
-
         switch(con.getResponseCode()) {
             case 200: break;
             case 401: throw new UnauthorizedException();

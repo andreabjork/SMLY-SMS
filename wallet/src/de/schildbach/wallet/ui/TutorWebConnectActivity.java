@@ -2,6 +2,7 @@ package de.schildbach.wallet.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.CookieSyncManager;
 import android.widget.AdapterView;
@@ -27,7 +28,6 @@ public class TutorWebConnectActivity extends AbstractWalletActivity
     private TextView message = null;
     private Spinner spinner = null;
     private UserLocalStore store;
-
     @Override
     protected void onCreate(final Bundle savedInstanceState)
     {
