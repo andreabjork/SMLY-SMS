@@ -122,10 +122,10 @@ public final class Constants
     /** Currency code for base 1/1000000 Bitcoin. */
 	public static final String CURRENCY_CODE_UBTC = "µ" + CoinDefinition.coinTicker;
 
-	public static final String DONATION_ADDRESS = CoinDefinition.DONATION_ADDRESS;;
+	public static final String DONATION_ADDRESS = CoinDefinition.DONATION_ADDRESS;
 
 	/** Recipient e-mail address for reports. */
-	public static final String REPORT_EMAIL = "hashengineeringsolutions@gmail.com";;
+	public static final String REPORT_EMAIL = "education.in.a.suitcase@gmail.com";
 
 	/** Subject line for manually reported issues. */
 	public static final String REPORT_SUBJECT_ISSUE = "Reported issue";

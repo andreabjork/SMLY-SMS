@@ -6,7 +6,7 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>1.6</version>
+	<version>1.7</version>
 	<name>Smileycoin Wallet</name>
 
 
@@ -185,7 +185,7 @@
 							<includes>
 								<include>${project.build.directory}/${project.artifactId}.apk</include>
 							</includes>
-							<keystore>/home/andrea/Vinna/KeyStore/tutor-web-key.keystore</keystore>
+							<keystore>../../KeyStore/tutor-web-key.keystore</keystore>
 							<alias>tutor-web</alias>
 							<storepass>TW_gstefans</storepass>
 							<keypass>TW_gstefans</keypass>
