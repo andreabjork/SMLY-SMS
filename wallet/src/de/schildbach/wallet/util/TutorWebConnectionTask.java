@@ -14,6 +14,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.regex.Pattern;
 
+import javax.net.ssl.HttpsURLConnection;
+
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.ui.AbstractWalletActivity;
@@ -62,6 +64,7 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
             thrownException = e;
         } catch(Exception e) {
             thrownException = e;
+            e.printStackTrace();
         }
 
         return null;
@@ -71,33 +74,80 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         HttpURLConnection con;
         URL obj = new URL(url);
         con = (HttpURLConnection) obj.openConnection();
+        con.setInstanceFollowRedirects(false);
 
-        // Add request header
-        con.setRequestMethod("POST");
-        // Adjust request depending on login/redeeming coins.
-        String requestValues="form.submitted=1&pwd_empty="+(pw.length()>0 ? 1 : 0)+"&__ac_name="+usr+"&__ac_password="+pw;
-
-        // Send post request
+        // This needs to be done here because the body of the request needs to be written
+        // before checking the response. Do this again if we need to redirect.
         con.setDoOutput(true);
+        con.setRequestMethod("POST");
+        // Now that we've handled redirect, write to body of request:
+        String requestValues="form.submitted=1&pwd_empty="+(pw.length()>0 ? 0 : 1)+"&__ac_name="+usr+"&__ac_password="+pw;
+        // removed from here
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
         wr.writeBytes(requestValues);
         wr.flush();
         wr.close();
 
-        store.clearSessionData(); // Clears cookies and coin balance before logging in
 
+        boolean redirect = false;
+
+        // normally, 3xx is redirect
+        int status = con.getResponseCode();
+        if (status != HttpURLConnection.HTTP_OK) {
+            if (status == HttpURLConnection.HTTP_MOVED_TEMP
+                    || status == HttpURLConnection.HTTP_MOVED_PERM
+                    || status == HttpURLConnection.HTTP_SEE_OTHER)
+                redirect = true;
+        }
+
+        if (redirect) {
+            // get redirect url from "location" header field
+            String newUrl = con.getHeaderField("Location");
+            Log.d("REDEEM", newUrl);
+            // get the cookie if need, for login
+            String cookies = con.getHeaderField("Set-Cookie");
+
+            // open the new connnection again
+            con = (HttpURLConnection) new URL(newUrl).openConnection();
+            con.setRequestProperty("Cookie", cookies);
+            con.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+            con.setDoOutput(true);
+            con.setRequestMethod("POST");
+            // Now that we've handled redirect, write to body of request:
+            wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(requestValues);
+            wr.flush();
+            wr.close();
+
+            System.out.println("Redirect to URL : " + newUrl);
+        }
+
+
+
+        // Store cookie:
+        store.clearSessionData(); // Clears cookies and coin balance before logging in
         String cookie = this.getCookie(con);
-        if(!cookie.contains("deleted")) {
+        if(cookie!=null && !cookie.contains("deleted")) {
             store.clearUserData();
             store.storeUserData(usr, cookie, spinnerVal);
         }
 
         switch(con.getResponseCode()) {
-            case 200: break;
-            case 401: throw new UnauthorizedException();
-            case 403: throw new UnauthorizedException();
-            case 500: throw new InternalErrorException();
-            default: throw new Exception("An unknown exception has ocurred.");
+            case 200:
+                Log.d("REDEEM", "Case 200, breaking...");
+                break;
+            case 401:
+                Log.d("REDEEM", "Case 401 -> exception!");
+                throw new UnauthorizedException();
+            case 403:
+                Log.d("REDEEM", "Case 403, unauthorized...");
+                throw new UnauthorizedException();
+            case 500:
+                Log.d("REDEEM", "Case 500, internal");
+                throw new InternalErrorException();
+            default:
+                Log.d("REDEEM", "Default?");
+                throw new Exception("An unknown exception has ocurred.");
         }
 
         return con.getResponseCode();
@@ -107,7 +157,7 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         HttpURLConnection con;
         URL obj = new URL(url);
         con = (HttpURLConnection) obj.openConnection();
-
+        con.setInstanceFollowRedirects(false);
         CookieHandler.setDefault(new CookieManager());
         String requestValues = "{\"walletId\":\""+address.toString()+"\"}";
         // Add request header
@@ -121,6 +171,41 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
         wr.writeBytes(requestValues);
         wr.flush();
         wr.close();
+
+        // Handle redirect.
+        boolean redirect = false;
+
+        // normally, 3xx is redirect
+        int status = con.getResponseCode();
+        if (status != HttpURLConnection.HTTP_OK) {
+            if (status == HttpURLConnection.HTTP_MOVED_TEMP
+                    || status == HttpURLConnection.HTTP_MOVED_PERM
+                    || status == HttpURLConnection.HTTP_SEE_OTHER)
+                redirect = true;
+        }
+
+        if (redirect) {
+            // get redirect url from "location" header field
+            String newUrl = con.getHeaderField("Location");
+            Log.d("REDEEM", newUrl);
+            // get the cookie if need, for login
+            String cookies = con.getHeaderField("Set-Cookie");
+
+            // open the new connnection again
+            con = (HttpURLConnection) new URL(newUrl).openConnection();
+            CookieHandler.setDefault(new CookieManager());;
+            // Add request header
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            con.setRequestProperty("Cookie", store.getUserCookie());
+            // Send post request
+            con.setDoOutput(true);
+            wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(requestValues);
+            wr.flush();
+            wr.close();
+
+        }
 
         switch(con.getResponseCode()) {
             case 200: break;
@@ -164,7 +249,9 @@ public class TutorWebConnectionTask extends AsyncTask<String, String, Void> {
 
     // Returns the Set-Cookie header from post request with HttpURLConnection
     private String getCookie(HttpURLConnection urlCon) {
-        return (urlCon.getHeaderField("Set-Cookie").split(Pattern.quote(";")))[0];
+        String cookieHeader = urlCon.getHeaderField("Set-Cookie");
+        if(cookieHeader == null) return null;
+        else return (urlCon.getHeaderField("Set-Cookie").split(Pattern.quote(";")))[0];
     }
 
     // 401, 403
