@@ -6,7 +6,7 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>1.9</version>
+	<version>1.10</version>
 	<name>Smileycoin Wallet</name>
 
 
