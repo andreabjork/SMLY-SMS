@@ -1,4 +1,8 @@
-class MessageCoder {
+
+package de.schildbach.wallet.ui.message;
+
+
+class Message {
 
 
     // HOW IT WORKS:
@@ -9,6 +13,12 @@ class MessageCoder {
     // int[]{integer, code, for, each, char, of, the, string}
     // From this we make the word integercodeforeachcharofthestring and split it
     // into amount 10.integerc 10.odeforea 10.chcharof 10.thestrin 10.g0000000
+
+    private String message;
+
+    public Message(String message) {
+        this.message = message;
+    }
 
     // The encoding defined for this testrun.
     // Huffman coding based on the frequency of these characters in English.
@@ -142,6 +152,10 @@ class MessageCoder {
     }
 
 
+    public double[] getAmountsForMessage() {
+        return amountsFromIntSeq(encode(this.message));
+    }
+
     // ====
     // MAIN
     // ====
@@ -197,12 +211,6 @@ class MessageCoder {
         return s;
     }
 
-    private String toString(String[] sArray) {
-        String str = "";
-        for(String s : sArray) str += s;
-
-        return str;
-    }
 
     private String toString(double[] dArray) {
         String s = "";

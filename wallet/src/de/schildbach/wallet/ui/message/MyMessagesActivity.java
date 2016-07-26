@@ -1,13 +1,27 @@
+
+package de.schildbach.wallet.ui.message;
+
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.actionbarsherlock.app.ActionBar;
+
+import de.schildbach.wallet.ui.AbstractWalletActivity;
+import de.schildbach.wallet.ui.WalletActivity;
+import hashengineering.smileycoin.wallet.R;
+
 /**
  * @author Andrea Bjornsdottir
  */
-public final class SendCoinsActivity extends AbstractWalletActivity
-{
+public final class MyMessagesActivity extends AbstractWalletActivity {
     public static final String INTENT_EXTRA_PAYMENT_INTENT = "payment_intent";
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState)
-    {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.my_messages_activity);
@@ -18,7 +32,7 @@ public final class SendCoinsActivity extends AbstractWalletActivity
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        Button button= (Button) findViewById(R.id.msg_btn);
+        Button button = (Button) findViewById(R.id.msgBtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,3 +41,5 @@ public final class SendCoinsActivity extends AbstractWalletActivity
         });
 
     }
+
+}
