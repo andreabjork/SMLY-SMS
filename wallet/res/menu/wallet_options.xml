@@ -27,6 +27,11 @@
 		android:showAsAction="ifRoom|withText"
 		android:title="@string/address_book_activity_title"/>
 	<item
+		android:id="@+id/wallet_options_message"
+		android:icon="@drawable/ic_action_message"
+		android:showAsAction="ifRoom|withText"
+		android:title="Messages"/>
+	<item
 		android:id="@+id/wallet_options_tutorweb"
 		android:icon="@drawable/ic_action_tutorweb"
 		android:showAsAction="ifRoom|withText"
