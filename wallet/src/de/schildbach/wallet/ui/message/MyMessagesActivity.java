@@ -33,10 +33,11 @@ public final class MyMessagesActivity extends AbstractWalletActivity {
 
 
         Button button = (Button) findViewById(R.id.msgBtn);
+        Intent sendMsgIntent = new Intent(this, SendMessageActivity.class);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(this, SendMessageActivity.class));
+                startActivity(sendMsgIntent);
             }
         });
 

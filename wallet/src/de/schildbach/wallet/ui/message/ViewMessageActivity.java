@@ -20,7 +20,7 @@ public final class ViewMessageActivity extends AbstractWalletActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.view_message_content);
+        setContentView(R.layout.view_message_activity);
 
         getWalletApplication().startBlockchainService(false);
 
