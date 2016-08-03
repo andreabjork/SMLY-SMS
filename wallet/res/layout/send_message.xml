@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <AutoCompleteTextView
+        android:id="@+id/send_coins_receiving_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_entry_padding_horizontal"
+        android:layout_marginRight="@dimen/list_entry_padding_horizontal"
+        android:completionThreshold="1"
+        android:hint="@string/send_coins_fragment_receiving_address_hint"
+        android:imeOptions="flagNoExtractUi"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="@dimen/font_size_normal"
+        android:layout_weight="0.11" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.15" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:text="Type Your Message..."
+        android:id="@+id/msgView"
+        android:layout_weight="0.22" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="The message price is 10.00 SMLY"
+        android:id="@+id/priceLbl"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.11" />
+
+    <Button
+        android:layout_width="388dp"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:id="@+id/sendBtn"
+        android:layout_gravity="bottom" />
+
+</LinearLayout>

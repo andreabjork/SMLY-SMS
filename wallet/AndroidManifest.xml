@@ -183,6 +183,18 @@
 			android:label="@string/tutorweb_spend_title"
 			android:screenOrientation="behind" />
 		<activity
+			android:name="de.schildbach.wallet.ui.message.MyMessagesActivity"
+			android:label="@string/mymessages_activity_title"
+			android:screenOrientation="behind" />
+		<activity
+			android:name="de.schildbach.wallet.ui.message.SendMessageActivity"
+			android:label="@string/sendmessage_activity_title"
+			android:screenOrientation="behind" />
+		<activity
+			android:name="de.schildbach.wallet.ui.message.ViewMessageActivity"
+			android:label="@string/viewmessage_activity_title"
+			android:screenOrientation="behind" />
+		<activity
 			android:name="de.schildbach.wallet.ui.ExchangeRatesActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:label="@string/exchange_rates_activity_title"

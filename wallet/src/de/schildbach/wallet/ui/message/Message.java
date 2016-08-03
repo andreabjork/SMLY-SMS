@@ -160,9 +160,9 @@ class Message {
     // MAIN
     // ====
 
-    public static void main(String[] args) {
+    public static void main(String[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             args) {
 
-        Message msg = new Message();
+        Message msg = new Message("this is a dummy message");
 
         if(args.length == 0) {
             System.out.println("You need to run the program with an argument. Exiting...");

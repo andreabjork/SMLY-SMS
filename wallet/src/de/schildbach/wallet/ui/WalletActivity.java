@@ -86,6 +86,7 @@ import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.data.PaymentIntent;
 import de.schildbach.wallet.ui.InputParser.BinaryInputParser;
 import de.schildbach.wallet.ui.InputParser.StringInputParser;
+import de.schildbach.wallet.ui.message.MyMessagesActivity;
 import de.schildbach.wallet.ui.send.SendCoinsActivity;
 import de.schildbach.wallet.ui.send.SweepWalletActivity;
 import de.schildbach.wallet.util.CrashReporter;
@@ -291,6 +292,10 @@ public final class WalletActivity extends AbstractWalletActivity
 
 			case R.id.wallet_options_preferences:
 				startActivity(new Intent(this, PreferencesActivity.class));
+				return true;
+
+			case R.id.wallet_options_message:
+				startActivity(new Intent(this, MyMessagesActivity.class));
 				return true;
 
 			case R.id.wallet_options_tutorweb:
