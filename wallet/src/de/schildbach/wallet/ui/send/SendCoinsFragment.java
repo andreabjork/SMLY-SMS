@@ -197,7 +197,6 @@ public final class SendCoinsFragment extends SherlockFragment
 		public void afterTextChanged(final Editable s)
 		{
 			dismissPopup();
-
 			validateReceivingAddress(false);
 		}
 

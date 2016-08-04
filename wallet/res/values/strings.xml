@@ -289,5 +289,10 @@ material and a built-in drilling system.
 	<string name="mymessages_activity_title">My Messages</string>
 	<string name="sendmessage_activity_title">Send Message</string>
 	<string name="viewmessage_activity_title">Message</string>
+	<string name="help_send_message">null</string>
+	<string name="send_message_fragment_receiving_address_label">Send Message To</string>
+	<string name="send_message_fragment_receiving_address_hint">type address or name</string>
+	<string name="send_message_fragment_amount_label">Message Cost</string>
+	<string name="send_message_fragment_direct_payment_enable">Send payment directly to the payee.</string>
 
 </resources>

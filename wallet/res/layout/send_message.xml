@@ -45,6 +45,7 @@
         android:layout_height="wrap_content"
         android:text="Send"
         android:id="@+id/sendBtn"
+        style="@style/TutorWebButtons"
         android:layout_gravity="bottom" />
 
 </LinearLayout>

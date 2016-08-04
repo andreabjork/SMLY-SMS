@@ -5,10 +5,18 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:id="@+id/messageList"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.78" />
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="177dp"
         android:layout_height="wrap_content"
-        android:text="Send a Message"
+        android:text="Create a Message"
         android:id="@+id/msgBtn"
+        style="@style/TutorWebButtons"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>
