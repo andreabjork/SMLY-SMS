@@ -41,6 +41,7 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -53,6 +54,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.CursorAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -187,6 +189,12 @@ public final class SendMessageFragment extends SherlockFragment
     private static final int REQUEST_CODE_ENABLE_BLUETOOTH_FOR_DIRECT_PAYMENT = 2;
 
     private static final Logger log = LoggerFactory.getLogger(SendMessageFragment.class);
+
+    // ADDED FOR MESSAGES -------------------------
+    private BigInteger[] messageAmounts;
+    // --------------------------------------------
+
+
 
     private enum State
     {
@@ -510,6 +518,8 @@ public final class SendMessageFragment extends SherlockFragment
         btcAmountView.setInputPrecision(config.getBtcMaxPrecision());
         btcAmountView.setHintPrecision(config.getBtcPrecision());
         btcAmountView.setShift(config.getBtcShift());
+        // Disable the view so the user can't choose the amount himself.
+        btcAmountView.setEnabled(false);
 
         final CurrencyAmountView localAmountView = (CurrencyAmountView) view.findViewById(R.id.send_message_amount_local);
         localAmountView.setInputPrecision(Constants.LOCAL_PRECISION);
@@ -538,6 +548,18 @@ public final class SendMessageFragment extends SherlockFragment
         sentTransactionView = (ListView) view.findViewById(R.id.send_message_sent_transaction);
         sentTransactionListAdapter = new TransactionsListAdapter(activity, wallet, application.maxConnectedPeers(), false);
         sentTransactionView.setAdapter(sentTransactionListAdapter);
+
+        // ADDED FOR MESSAGE FUNCTIONALITY
+        final EditText viewMessage = (EditText) view.findViewById(R.id.message_view);
+        viewMessage.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                Log.i("MESSAGE", "The focus changed, now we need to parse the message and calculate the cost");
+                // Here we need to establish the amounts array and show the sum in the CurrencyView.
+                processMessage(viewMessage.getText().toString());
+            }
+        });
+
 
         viewGo = (Button) view.findViewById(R.id.send_message_go);
         viewGo.setOnClickListener(new OnClickListener()
@@ -576,8 +598,7 @@ public final class SendMessageFragment extends SherlockFragment
     }
 
     @Override
-    public void onDestroyView()
-    {
+    public void onDestroyView() {
         super.onDestroyView();
 
         config.setLastExchangeDirection(amountCalculatorLink.getExchangeDirection());
@@ -1021,8 +1042,7 @@ public final class SendMessageFragment extends SherlockFragment
         }.sendCoinsOffline(sendRequest); // send asynchronously
     }
 
-    private void handleScan()
-    {
+    private void handleScan() {
         startActivityForResult(new Intent(activity, ScanActivity.class), REQUEST_CODE_SCAN);
     }
 
@@ -1448,4 +1468,25 @@ public final class SendMessageFragment extends SherlockFragment
             new RequestPaymentRequestTask.BluetoothRequestTask(backgroundHandler, callback, bluetoothAdapter)
                     .requestPaymentRequest(paymentRequestUrl);
     }
+
+
+    // ------------------------ FUNCTIONS RELEVANT TO MESSAGE FUNCTIONALITY ------------------------
+
+    private void processMessage(String msgStr) {
+        Message msg = new Message(msgStr);
+        messageAmounts = msg.encodeAndGetAmounts();
+
+        btcAmountView.setAmount(bigIntSum(messageAmounts));
+    }
+
+    private BigInteger bitIntSum(BigInteger[] bigA) {
+        BigInteger sum = new BigInteger("0");
+        for(BigInteger bi : bigA) {
+            sum.add(bi);
+        }
+
+        return sum;
+    }
+
+    // ---------------------------------------------------------------------------------------------
 }

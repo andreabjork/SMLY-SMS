@@ -2,6 +2,8 @@
 package de.schildbach.wallet.ui.message;
 
 
+import java.math.BigInteger;
+
 class Message {
 
 
@@ -24,6 +26,14 @@ class Message {
     // Huffman coding based on the frequency of these characters in English.
     private char[] codeSet = new char[]{'e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r', 'd', 'l', 'c', 'u', 'm', 'w', 'f', 'g', 'y', 'p', 'b', 'v', 'k', 'j', 'x', 'q', 'z'};
     private int[] codeKeys = new int[]{  1,   2,   3,   4,   5,   6,   7,   80,  81,  82,  83,  84,  85,  86,  87,  88,  90,  91,  92,  93,  94,  95,  96,  97,  98,  99};
+
+    public BigInteger[] encodeAndGetAmounts() {
+        return message.amountsFromIntSeq(message.encode());
+    }
+
+    public BigInteger[] decodeAndGetValue() {
+        //return message.decode(message.)
+    }
 
 
     // Use: encodedString = encode(str)
