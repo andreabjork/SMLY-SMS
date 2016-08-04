@@ -173,8 +173,11 @@ public final class SendMessageFragment extends SherlockFragment
     private MenuItem scanAction;
     private MenuItem emptyAction;
 
+	// This payment intent is used to start the fragment (for now) but it 
+	// will not actually be sent.
     private PaymentIntent paymentIntent;
-
+	private PaymentIntent[] pIntents;
+	
     private AddressAndLabel validatedAddress = null;
 
     private Boolean directPaymentAck = null;
@@ -890,7 +893,24 @@ public final class SendMessageFragment extends SherlockFragment
         }
     }
 
-    private void handleGo()
+	private void handleGo() {
+		// Handle the first payment of allIntents and then trigger
+		// the next one when/if that is successful.
+		handlePayments(pIntents, address);
+	}
+	
+	// Handles an array of payments by performing the first payment 
+	// by the intent and then recursively handling the rest.
+	private void handlePayments(PaymentIntent[] pIntents, Address address) {
+		if(pIntents.length <= 0) return; 
+		
+		// Set the head of the array as the global paymentIntent:
+		paymentIntent = pIntents[0];
+		handlePayment();
+		handlePayments(tail(pIntents));
+	}
+
+    private void handlePayment(PaymentIntent paymentIntent)
     {
         state = State.PREPARATION;
         updateView();
@@ -1041,6 +1061,7 @@ public final class SendMessageFragment extends SherlockFragment
             }
         }.sendCoinsOffline(sendRequest); // send asynchronously
     }
+
 
     private void handleScan() {
         startActivityForResult(new Intent(activity, ScanActivity.class), REQUEST_CODE_SCAN);
@@ -1471,13 +1492,40 @@ public final class SendMessageFragment extends SherlockFragment
 
 
     // ------------------------ FUNCTIONS RELEVANT TO MESSAGE FUNCTIONALITY ------------------------
-
+    
+    // handleGo function needs to be changed somewhat to handle multiple payments recursively
+    
+    
+    // Gets message encoded into a number of amounts
     private void processMessage(String msgStr) {
         Message msg = new Message(msgStr);
         messageAmounts = msg.encodeAndGetAmounts();
 
+        // Create the payment intents from the array of amounts we will send:
+        PaymentIntents allIntents = createPaymentIntents(messageAmounts, address);
+
+        // Update the amount:
         btcAmountView.setAmount(bigIntSum(messageAmounts));
+        amountCalculatorLink.update();
+
     }
+
+    private void createPaymentIntents(BigInteger[] amounts, Address address) {
+        PaymentIntent[] pIntents = new PaymentIntent[amounts.length];
+        for(int i = 0; i < amounts.length; i++) {
+            pIntents[i] = new PaymentIntent(PaymentIntent.Standard.BIP70, null, null, null, buildSimplePayTo(amounts[i], address), label, null, null, null);
+        }
+
+    }
+    
+    private PaymentIntent[] tail(PaymentIntent[] paymentIntents) {
+		PaymentIntent[] pis = new PaymentIntent[pIntents.length-1];
+		for(int i = 0; i < pis.length; i++) {
+				pis[i] = paymentIntents[i+1];
+		}
+		
+		return pis;
+	}
 
     private BigInteger bitIntSum(BigInteger[] bigA) {
         BigInteger sum = new BigInteger("0");
