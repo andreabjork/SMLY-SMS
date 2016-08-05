@@ -6,6 +6,7 @@ package de.schildbach.wallet.ui.message;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
@@ -36,7 +37,7 @@ public final class SendMessageActivity extends AbstractBindServiceActivity
     protected void onCreate(final Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
+        Log.i("MESSAGE", "Let me prove that this is actually logging something");
         setContentView(R.layout.send_message_content);
 
         getWalletApplication().startBlockchainService(false);

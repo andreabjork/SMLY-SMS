@@ -896,26 +896,30 @@ public final class SendMessageFragment extends SherlockFragment
 	private void handleGo() {
 		// Handle the first payment of allIntents and then trigger
 		// the next one when/if that is successful.
-		handlePayments(pIntents, address);
+		handlePayments(pIntents);
 	}
 	
 	// Handles an array of payments by performing the first payment 
 	// by the intent and then recursively handling the rest.
-	private void handlePayments(PaymentIntent[] pIntents, Address address) {
-		if(pIntents.length <= 0) return; 
+	private void handlePayments(PaymentIntent[] pIntents) {
+		if(pIntents.length == 1) {
+            handlePayment(pIntents[0], true);
+            return;
+        }
 		
 		// Set the head of the array as the global paymentIntent:
 		paymentIntent = pIntents[0];
-		handlePayment();
+		handlePayment(paymentIntent, false);
 		handlePayments(tail(pIntents));
 	}
 
-    private void handlePayment(PaymentIntent paymentIntent)
+    private void handlePayment(final PaymentIntent paymentIntent, final boolean lastPayment)
     {
         state = State.PREPARATION;
         updateView();
 
         // final payment intent
+        // Since the payment is merged with amount and address at this point, we maybe don't need to define those in the beginning.
         final PaymentIntent finalPaymentIntent = paymentIntent.mergeWithEditedValues(amountCalculatorLink.getAmount(),
                 validatedAddress != null ? validatedAddress.address : null);
         final BigInteger finalAmount = finalPaymentIntent.getAmount();
@@ -946,7 +950,8 @@ public final class SendMessageFragment extends SherlockFragment
                 application.broadcastTransaction(sentTransaction);
 
                 final ComponentName callingActivity = activity.getCallingActivity();
-                if (callingActivity != null)
+
+                if (callingActivity != null && lastPayment)
                 {
                     log.info("returning result to calling activity: {}", callingActivity.flattenToString());
                     final Intent result = new Intent();
@@ -1494,27 +1499,32 @@ public final class SendMessageFragment extends SherlockFragment
     // ------------------------ FUNCTIONS RELEVANT TO MESSAGE FUNCTIONALITY ------------------------
     
     // handleGo function needs to be changed somewhat to handle multiple payments recursively
-    
-    
+
+
     // Gets message encoded into a number of amounts
     private void processMessage(String msgStr) {
-        Message msg = new Message(msgStr);
-        messageAmounts = msg.encodeAndGetAmounts();
+        //Message msg = new Message(msgStr);
+        //messageAmounts = msg.encodeAndGetAmounts();
 
+        // For now, lets just hard code a big int array and see if we can make these payments to an address:
+        messageAmounts = new BigInteger[]{new BigInteger("1000"), new BigInteger("500000"), new BigInteger("2000000")};
         // Create the payment intents from the array of amounts we will send:
-        PaymentIntents allIntents = createPaymentIntents(messageAmounts, address);
+        Address address = (validatedAddress != null ? validatedAddress.address : null);
+        PaymentIntent[] allIntents = createPaymentIntents(messageAmounts);
 
         // Update the amount:
-        btcAmountView.setAmount(bigIntSum(messageAmounts));
-        amountCalculatorLink.update();
+        amountCalculatorLink.setBtcAmount(bigIntSum(messageAmounts));
+        //amountCalculatorLink.update();
 
     }
 
-    private void createPaymentIntents(BigInteger[] amounts, Address address) {
+    private PaymentIntent[] createPaymentIntents(BigInteger[] amounts) {
         PaymentIntent[] pIntents = new PaymentIntent[amounts.length];
         for(int i = 0; i < amounts.length; i++) {
-            pIntents[i] = new PaymentIntent(PaymentIntent.Standard.BIP70, null, null, null, buildSimplePayTo(amounts[i], address), label, null, null, null);
+            pIntents[i] = PaymentIntent.blank();//new PaymentIntent(PaymentIntent.Standard.BIP70, null, null, null, buildSimplePayTo(amounts[i], address), label, null, null, null);
         }
+
+        return pIntents;
 
     }
     
@@ -1527,7 +1537,7 @@ public final class SendMessageFragment extends SherlockFragment
 		return pis;
 	}
 
-    private BigInteger bitIntSum(BigInteger[] bigA) {
+    private BigInteger bigIntSum(BigInteger[] bigA) {
         BigInteger sum = new BigInteger("0");
         for(BigInteger bi : bigA) {
             sum.add(bi);
