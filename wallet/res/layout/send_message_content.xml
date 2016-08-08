@@ -7,7 +7,7 @@
 	android:scrollbars="none" >
 
 	<fragment
-		android:id="@+id/send_coins_fragment"
+		android:id="@+id/send_message_fragment"
 		android:name="de.schildbach.wallet.ui.message.SendMessageFragment"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" />
