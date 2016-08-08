@@ -5,6 +5,7 @@ package de.schildbach.wallet.ui.message;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -37,6 +38,7 @@ public final class MyMessagesActivity extends AbstractWalletActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("MESSAGE", "Let me prove that this is actually logging something");
                 startActivity(sendMsgIntent);
             }
         });

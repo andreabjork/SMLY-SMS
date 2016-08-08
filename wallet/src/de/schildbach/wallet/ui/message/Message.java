@@ -28,11 +28,11 @@ class Message {
     private int[] codeKeys = new int[]{  1,   2,   3,   4,   5,   6,   7,   80,  81,  82,  83,  84,  85,  86,  87,  88,  90,  91,  92,  93,  94,  95,  96,  97,  98,  99};
 
     public BigInteger[] encodeAndGetAmounts() {
-        return message.amountsFromIntSeq(message.encode());
+        return null;//message.amountsFromIntSeq(message.encode());
     }
 
     public BigInteger[] decodeAndGetValue() {
-        //return message.decode(message.)
+        return null;//return message.decode(message.)
     }
 
 
