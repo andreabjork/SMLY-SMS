@@ -1508,18 +1508,23 @@ public final class SendMessageFragment extends SherlockFragment
 
         // For now, lets just hard code a big int array and see if we can make these payments to an address:
         messageAmounts = new BigInteger[]{new BigInteger("1000"), new BigInteger("500000"), new BigInteger("2000000")};
+        for(BigInteger bigint : messageAmounts) Log.d("MESSAGE", "This is a big int from message amounts "+bigint);
         // Create the payment intents from the array of amounts we will send:
         Address address = (validatedAddress != null ? validatedAddress.address : null);
+        Log.d("MESSAGE", "This is the address "+address);
         PaymentIntent[] allIntents = createPaymentIntents(messageAmounts);
 
         // Update the amount:
+        Log.d("MESSAGE", "This is from the amount calculator link "+bigIntSum(messageAmounts));
         amountCalculatorLink.setBtcAmount(bigIntSum(messageAmounts));
+
+        Log.d("MESSAGE", "Well it's suppsed to be in it, this is what is actually in it "+amountCalculatorLink.getAmount());
         //amountCalculatorLink.update();
 
     }
 
     private PaymentIntent[] createPaymentIntents(BigInteger[] amounts) {
-        PaymentIntent[] pIntents = new PaymentIntent[amounts.length];
+        pIntents = new PaymentIntent[amounts.length];
         for(int i = 0; i < amounts.length; i++) {
             pIntents[i] = PaymentIntent.blank();//new PaymentIntent(PaymentIntent.Standard.BIP70, null, null, null, buildSimplePayTo(amounts[i], address), label, null, null, null);
         }
@@ -1529,7 +1534,7 @@ public final class SendMessageFragment extends SherlockFragment
     }
     
     private PaymentIntent[] tail(PaymentIntent[] paymentIntents) {
-		PaymentIntent[] pis = new PaymentIntent[pIntents.length-1];
+		PaymentIntent[] pis = new PaymentIntent[paymentIntents.length-1];
 		for(int i = 0; i < pis.length; i++) {
 				pis[i] = paymentIntents[i+1];
 		}
@@ -1540,7 +1545,9 @@ public final class SendMessageFragment extends SherlockFragment
     private BigInteger bigIntSum(BigInteger[] bigA) {
         BigInteger sum = new BigInteger("0");
         for(BigInteger bi : bigA) {
-            sum.add(bi);
+            Log.d("MESSAGE", "Sum is "+sum+" and were adding "+bi);
+            sum = sum.add(bi);
+            Log.d("MESSAGE", "Now sum is " +sum);
         }
 
         return sum;
