@@ -4,7 +4,7 @@ package de.schildbach.wallet.ui.message;
 
 import java.math.BigInteger;
 
-class Message {
+class   Message {
 
 
     // HOW IT WORKS:
@@ -27,8 +27,13 @@ class Message {
     private char[] codeSet = new char[]{'e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r', 'd', 'l', 'c', 'u', 'm', 'w', 'f', 'g', 'y', 'p', 'b', 'v', 'k', 'j', 'x', 'q', 'z'};
     private int[] codeKeys = new int[]{  1,   2,   3,   4,   5,   6,   7,   80,  81,  82,  83,  84,  85,  86,  87,  88,  90,  91,  92,  93,  94,  95,  96,  97,  98,  99};
 
-    public BigInteger[] encodeAndGetAmounts() {
-        return null;//message.amountsFromIntSeq(message.encode());
+    public BigInteger[] amountsFromMessage() {
+        return amountsFromIntSeq(this.encode());
+    }
+
+    public String messageFromAmounts(BigInteger[] amounts) {
+        //return decode(intSeqFromAmounts());
+        return null;
     }
 
     public BigInteger[] decodeAndGetValue() {
@@ -39,10 +44,10 @@ class Message {
     // Use: encodedString = encode(str)
     // Pre: str is a string using only ASCII characters a, b, c, ... , z
     // Post: encodedString is str encoded as a decimal number using the coding defined above.
-    private int[] encode(String content) {
+    private int[] encode() {
         // We will put the numbers in an array so it can easily be decoded
-        int[] encoding = new int[content.length()];
-        char[] characters = content.toCharArray();
+        int[] encoding = new int[message.length()];
+        char[] characters = message.toCharArray();
 
         for(int j = 0; j < characters.length; j++) {
             int i = indexOf(codeSet, characters[j]);
@@ -80,7 +85,7 @@ class Message {
 
     // Takes the integer sequence from encoding the message and transforms
     // it into amounts
-    private double[] amountsFromIntSeq(int[] intseq) {
+    private BigInteger[] amountsFromIntSeq(int[] intseq) {
         // Append integers to string to count the digits
         String s = "";
         for(int i : intseq) s += Integer.toString(i);
@@ -91,6 +96,18 @@ class Message {
             for(int i = 0; i<(8 - n%8); i++) s += "0";
         }
 
+        // Int sequences of 8, in BigInt
+        int nSeqs = s.length() / 8;
+        BigInteger[] stripsOfEight = new BigInteger[nSeqs];
+        int k = 0; // To count the length of digits gathered
+        int j = 0; // Index to the array.
+        while(k < s.length()) {
+            stripsOfEight[j] = new BigInteger(s.substring(k, k+8));
+            System.out.println("Strips of eight no "+j+" is: "+stripsOfEight[j]);
+            j++;
+            k += 8;
+        }
+        /*
         // Create an array to hold every 8 digits that occur
         int nSeqs = s.length() / 8;
         int[] stripsOfEight = new int[nSeqs];
@@ -102,11 +119,13 @@ class Message {
             j++;
             k += 8;
         }
+        */
 
-        double[] amounts = new double[nSeqs+1];
-        amounts[0] = 1010 + nSeqs/100; // This way, every message starts with 1010.numberOfTransactionsThatFollow
+        BigInteger[] amounts = new BigInteger[nSeqs+1];
+        amounts[0] = new BigInteger("101000000000"); //  + nSeqs; This way, every message starts with 1010.numberOfTransactionsThatFollow
+        BigInteger basePrice = new BigInteger("1000000000");
         for(int i = 0; i < nSeqs; i++) {
-            amounts[i+1] = 10 + stripsOfEight[i]/100000000.0;
+            amounts[i+1] = basePrice.add(stripsOfEight[i]);
             System.out.println("Amount no "+(i+1)+" is: "+amounts[i+1]);
         }
 
@@ -162,10 +181,6 @@ class Message {
     }
 
 
-    public double[] getAmountsForMessage() {
-        return amountsFromIntSeq(encode(this.message));
-    }
-
     // ====
     // MAIN
     // ====
@@ -180,8 +195,8 @@ class Message {
         }
 
         String word = args[0];
-        int[] encoding = msg.encode(word);
-        double[] amounts = msg.amountsFromIntSeq(encoding);
+        int[] encoding = msg.encode();
+        /*double[] amounts = msg.amountsFromIntSeq(encoding);
         int[] intSeq = msg.intSeqFromAmounts(amounts);
         //String decoding = msg.decode(intSeq);
 
@@ -190,7 +205,7 @@ class Message {
         System.out.println("That was encoded to "+msg.toString(encoding));
         System.out.println("The amounts we got: "+msg.toString(amounts));
         System.out.println("From the amounts, we get: "+msg.toString(intSeq));
-        //System.out.println("That can be decoded to "+decoding);
+        //System.out.println("That can be decoded to "+decoding);*/
     }
 
 

@@ -870,6 +870,8 @@ public final class SendCoinsFragment extends SherlockFragment
 				validatedAddress != null ? validatedAddress.address : null);
 		final BigInteger finalAmount = finalPaymentIntent.getAmount();
 
+
+
 		// prepare send request
 		final SendRequest sendRequest = finalPaymentIntent.toSendRequest();
 		final Address returnAddress = WalletUtils.pickOldestKey(wallet).toAddress(Constants.NETWORK_PARAMETERS);

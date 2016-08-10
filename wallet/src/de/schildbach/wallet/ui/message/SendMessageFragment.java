@@ -894,6 +894,7 @@ public final class SendMessageFragment extends SherlockFragment
     }
 
 	private void handleGo() {
+        Log.i("MESSAGE", "ABOUT TO HANDLE GO!!!");
 		// Handle the first payment of allIntents and then trigger
 		// the next one when/if that is successful.
 		handlePayments(pIntents);
@@ -902,6 +903,7 @@ public final class SendMessageFragment extends SherlockFragment
 	// Handles an array of payments by performing the first payment 
 	// by the intent and then recursively handling the rest.
 	private void handlePayments(PaymentIntent[] pIntents) {
+        Log.i("MESSAGE", "Handle payments...");
 		if(pIntents.length == 1) {
             handlePayment(pIntents[0], true);
             return;
@@ -915,6 +917,7 @@ public final class SendMessageFragment extends SherlockFragment
 
     private void handlePayment(final PaymentIntent paymentIntent, final boolean lastPayment)
     {
+        Log.i("MESSAGE", "NOW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         state = State.PREPARATION;
         updateView();
 
@@ -922,7 +925,10 @@ public final class SendMessageFragment extends SherlockFragment
         // Since the payment is merged with amount and address at this point, we maybe don't need to define those in the beginning.
         final PaymentIntent finalPaymentIntent = paymentIntent.mergeWithEditedValues(amountCalculatorLink.getAmount(),
                 validatedAddress != null ? validatedAddress.address : null);
+
+        Log.i("MESSAGE", "The getAmount from the amount calculator link gives us "+amountCalculatorLink.getAmount());
         final BigInteger finalAmount = finalPaymentIntent.getAmount();
+        Log.i("MESSAGE", "The amount from the 'final payment intent' however is "+finalPaymentIntent.getAmount());
 
         // prepare send request
         final SendRequest sendRequest = finalPaymentIntent.toSendRequest();
@@ -1503,11 +1509,12 @@ public final class SendMessageFragment extends SherlockFragment
 
     // Gets message encoded into a number of amounts
     private void processMessage(String msgStr) {
-        //Message msg = new Message(msgStr);
+        Message msg = new Message(msgStr);
+        BigInteger[] messageAmounts = msg.amountsFromMessage();
         //messageAmounts = msg.encodeAndGetAmounts();
 
         // For now, lets just hard code a big int array and see if we can make these payments to an address:
-        messageAmounts = new BigInteger[]{new BigInteger("1000"), new BigInteger("500000"), new BigInteger("2000000")};
+        // messageAmounts = new BigInteger[]{new BigInteger("1000"), new BigInteger("500000"), new BigInteger("2000000")};
         for(BigInteger bigint : messageAmounts) Log.d("MESSAGE", "This is a big int from message amounts "+bigint);
         // Create the payment intents from the array of amounts we will send:
         Address address = (validatedAddress != null ? validatedAddress.address : null);
